@@ -1,0 +1,90 @@
+.content {
+    margin: 15px;
+    border: 1px dotted #9E9E9E;
+    padding: 20px;
+}
+
+input {
+    padding: 15px;
+    width: 90%;
+    border-radius: 5px;
+    margin: 5px 0px 20px 0px;
+}
+
+.input-edad {
+    max-width: 60px;    
+    margin: 0px 10px;
+}
+
+.button-age {
+    padding: 10px;
+    background-color: #d7d8da;
+    border-radius: 5px;
+    margin: 10px;
+    width: unset;
+}
+
+.button-gris {
+    padding: 10px;
+    background-color: #d7d8da;
+    border-radius: 5px;
+    margin: 10px;
+    width: unset;
+}
+
+button {
+    padding: 10px;
+    background-color: aquamarine;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+img {
+    max-width: 100px;
+    border-radius: 100%;
+}
+
+.content-actualizar {
+    border: 1px solid #d7d8da;
+    padding: 10px;
+}
+
+.registrarse {
+    background-color: #d7d8da;;
+}
+
+.salir {
+    width: unset ;
+}
+
+.content-form {
+    margin: 15px;
+    border: 1px dotted #9E9E9E;
+    padding: 20px;
+}
+
+span {
+    color: red;
+    width: 100%;
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.new-password {
+    position: relative;
+
+    button {
+        background: aliceblue;
+        width: unset;
+        position: absolute;
+        right: 15%;
+        margin: 0px;
+        top: 15px;
+    }
+}
+
+.button-danger {
+    background-color: red;
+    color: white;
+}
+

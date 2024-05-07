@@ -1,0 +1,51 @@
+
+<ion-content>
+
+  <app-header [titulo]="tituloPagina"></app-header>
+  
+  <app-detail-carrito></app-detail-carrito>
+
+  <div style="text-align: center;">
+    @for (categoria of categorias; track $index) {
+      <button class="categoria" [ngClass]="{'categoria-selected': categoria.id == categoriaSelected}"
+      (click)="getProductsByCategoria(categoria.id)">{{categoria.name}}</button>
+    }
+  </div>
+
+
+    @if(!cargando) {
+
+
+        @for (item of items; track $index) {
+
+          <app-product-detail [item]="item"></app-product-detail>
+
+
+        } @empty {
+          <p >no hay articulos </p>
+        }
+
+        @if (enableMore) {
+          <div style="text-align:center" >
+            <button (click)="getProductsByCategoria()" class="more">más</button>
+          </div>
+        }
+
+    } 
+    @else {
+      <p style="text-align: center">cargando...</p>
+    }
+
+    <div  style="margin: 60px"></div>
+
+
+
+
+    <div style="margin: 60px"></div>
+
+
+
+  <app-footer></app-footer>
+
+</ion-content>
+

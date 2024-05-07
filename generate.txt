@@ -1,0 +1,2 @@
+ionic g s services/interaction
+ionic g s services/ionicons

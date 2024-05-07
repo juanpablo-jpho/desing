@@ -1,0 +1,30 @@
+npm install -g @ionic/cli
+ionic start
+
+// reemplazamos la carpeta app por la carpeta app del proyecto bases
+// reemplazamos la carpeta assets por la carpeta assets del proyecto bases
+// reemplazamos la carpeta environment por la carpeta environment del proyecto bases
+// en index.html -> lang="es"
+// reemplazamos el main.ts por el archivo main.ts del proyecto bases
+
+en el tsconfig.json agregamos
+    "strictPropertyInitialization": false,
+    "strictNullChecks": false,
+
+instalamos
+npm i @angular/fire
+npm install file-saver ngx-filesaver
+npm i @capacitor/browser
+
+
+copiamos los siguientes archivos y carpetas
+    .firebaserc
+    firebase.json
+
+(opcional)
+    functions
+    cors.json
+    firestore.indexes.json
+    firestore.rules
+
+

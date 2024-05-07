@@ -1,0 +1,200 @@
+<ion-content>
+
+  <div style="text-align: center;">
+    <p>PERFIL</p>
+  </div>
+
+  @if (!iniciando) {
+    @if (user && userProfile) {
+      <div style="margin: 20px;">
+        <h3> <i>Bienvienido</i> </h3>
+        @if (user.photoURL) {
+          <div>
+             @if(!newImage) {
+              <img [src]="user.photoURL | reftourl | async ">
+            } @else { 
+              <img [src]="newImage | filetourl">
+            }
+          </div>
+          <button (click)="downloadProfilePicture()">descargar</button>
+
+          <input #files (change)="viewPreview(files)" type="file" 
+                 style='display: none;' accept="image/*">
+
+          <button (click)="files.click()">editar</button>
+
+          @if (newImage) {
+            <button (click)="editarProfilePicture()">subir</button>
+          }
+        } @else {
+          <div>
+            <img src="https://i.pinimg.com/736x/0d/64/98/0d64989794b1a4c9d89bff571d3d5842.jpg">
+          </div>  
+        }
+        <div>
+          @if (user.emailVerified) {
+            <span style="color: green;">correo verificado</span>
+          } @else {
+            <span>correo no verificado</span>
+            <button class="button-age" (click)="enviarCorreo()">enviar correo de verificación</button>
+          }
+        </div>
+        <p style="margin: 0px"> <strong>Email:</strong> {{user.email}}
+            <button class="button-age" (click)="enableActualizarEmail = true">editar</button>
+        </p>
+       
+
+        @if (enableActualizarEmail) {
+          <div class="content-form">
+            <form [formGroup]="formNewEmail" (ngSubmit)="actualizarEmail()">
+            
+              <!-- email -->
+              <div class="input-content">
+                <label>Nuevo email</label>
+                <input placeholder="Email" formControlName="email">
+                <span 
+                    *ngIf="formNewEmail.controls['email'].hasError('required')">
+                  <i>Este campo es <strong>requerido</strong></i>  
+                </span>
+                <span style="text-align: end;"
+                *ngIf="formNewEmail.controls['email'].hasError('email')">
+                <i>Ingresa un email <strong>válido</strong></i>  
+                </span>
+        
+              </div>
+      
+              <!-- enviar -->
+              <div style="text-align: center">
+                <button (click)="enableActualizarEmail = false">
+                  <strong>cancelar</strong>
+                 </button>
+                <button type="submit"[disabled]="cargando">
+                    <strong>actualizar</strong>
+                </button>
+              </div>
+            
+            </form>
+          </div>
+        }
+
+        <p> <strong>Nombre:</strong> {{user.displayName}}</p>
+        <p> <strong>Edad:</strong> 
+          <input class="input-edad" type="number" [(ngModel)]="userProfile.age">
+          <button class="button-age" (click)="actualizarEdad()">guardar</button>
+        </p> 
+
+        
+        <button class="button-gris" (click)="enableActualizarPerfil =  true">
+          actualizar datos de perfil
+        </button>
+       
+        @if (enableActualizarPerfil) {
+          <div class="content-actualizar">
+            <p>Cambiar nombre de perfil:</p>
+            <div style="text-align: center">
+              <input type="text" [(ngModel)]="newName">
+            </div>
+            <p>Cambiar foto de perfil:</p>
+            <div style="text-align: center">
+              <input type="text" [(ngModel)]="newPhoto">
+            </div>
+            <div style="text-align: center">
+              <button (click)="actualizarPerfil()">Actualizar</button>
+              <button (click)="enableActualizarPerfil = false">Cancelar</button>
+            </div>
+          </div>
+        }
+  
+  
+      </div>
+      <button class="button-gris" style="margin-left: 25px;" 
+        (click)="enableCambiarPassword =  true">
+        establecer contraseña
+      </button>
+      @if (enableCambiarPassword) {
+        <div class="content-form">
+          <form [formGroup]="formCambiarPassword" (ngSubmit)="cambiarPassword()">
+          
+            <!-- new password -->
+            <div class="input-content">
+              <label>Establecer contraseña</label>
+              <div class="new-password">
+                <input formControlName="newPassword" [type]=" visible ? 'text' : 'password'" minlength="6">
+                <button (click)="visible = !visible" type="button">
+                  {{ visible ? 'ocultar' : 'ver' }}
+                </button>
+              </div>
+              <span style="text-align: end;"
+                  *ngIf="formCambiarPassword.controls['newPassword'].hasError('required')">
+                <i>Este campo es <strong>requerido</strong></i>  
+              </span>
+              <span style="text-align: end;"
+                  *ngIf="formCambiarPassword.controls['newPassword'].hasError('pattern')">
+                <i>Debe tener al menos 1 mayuscula, 1 minuscula, un caracter especial, un número y mínimo 8 caracteres</i>  
+              </span>
+            </div>
+
+            <!-- repita la contraseña -->
+            <div class="input-content">
+              <label>Repita la contraseña</label>
+              <input formControlName="repetPassword" type="password" minlength="6">
+              <span style="text-align: end;"
+                  *ngIf="formCambiarPassword.controls['repetPassword'].hasError('required')">
+                <i>Este campo es <strong>requerido</strong></i>  
+              </span>
+              <span style="text-align: end;"
+                  *ngIf="formCambiarPassword.controls['repetPassword'].hasError('notSame')">
+                <i>Las contraseñas no <strong>coinciden</strong></i>  
+              </span>
+            </div>
+    
+            <!-- enviar -->
+            <div style="text-align: center">
+              <button (click)="enableCambiarPassword = false">
+                <strong>cancelar</strong>
+               </button>
+              <button type="submit"[disabled]="cargando">
+                  <strong>cambiar</strong>
+              </button>
+            </div>
+          
+          
+          </form>
+        </div>
+      }
+      <div>
+        <button class="button-gris" style="margin-left: 25px;" 
+          (click)="eliminarCuenta()">
+          <strong>eliminar cuenta</strong> 
+        </button>
+      </div>
+ 
+      @if (isAdmin) {
+        <div style="text-align: right">
+          <button [routerLink]="['/user/admin']">administrar usuarios</button>
+        </div>
+      }
+
+      <div style="text-align: right">
+        <button class="salir" (click)="salir()">Salir</button>
+      </div>
+
+    } 
+    @if (!user) {
+      <div style="text-align: center">
+        <button class="ingresar" [routerLink]="['/user/login']" >Ingresar</button>
+      </div>
+    }
+  } 
+  @else {
+    <div style="text-align: center;">
+      <p>cargando....</p>
+    </div>
+  }
+
+
+
+  
+
+
+</ion-content>
