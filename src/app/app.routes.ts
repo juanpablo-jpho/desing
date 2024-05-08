@@ -24,6 +24,15 @@ export const routes: Routes = [
     path: 'user',
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule)
   },
+
+  // IONIC
+  {
+    path: 'content',
+    loadComponent: () => import('./ionic/content/content.component').then((c) => c.ContentComponent)
+  },
+
+
+
   {
     path: '',
     redirectTo: 'home',

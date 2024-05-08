@@ -1,0 +1,11 @@
+
+  @for (opc of showMenu; track $index) {
+
+    
+      <ion-item [routerLink]="[opc.enlace]" detail lines="full"  button routerDirection="forward"
+      (click)="closeMenu()">
+        <ion-label>{{opc.name}}</ion-label>
+        <ion-icon slot="start" [name]="opc.icon"></ion-icon>
+      </ion-item>
+  }
+
