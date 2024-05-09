@@ -1,19 +1,8 @@
 ionic g c ionic/content --spec=false
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-ionic g s services/interaction
+ionic g c ionic/icons --spec=false
 ionic g s services/ionicons
+
+
+

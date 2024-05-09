@@ -1,9 +1,11 @@
 import { Component, OnInit, inject } from '@angular/core';
-import { IonContent, IonHeader, IonMenuToggle, IonTitle, IonToolbar, IonIcon, IonButtons, IonButton, IonLabel, IonItem, IonRouterLink, MenuController } from "@ionic/angular/standalone";
+import { IonContent, IonHeader, IonMenuToggle, IonTitle, 
+         IonToolbar, IonIcon, IonButtons, IonButton, IonLabel, 
+         IonItem, IonRouterLink, MenuController } from "@ionic/angular/standalone";
 import { Models } from 'src/app/models/models';
 import { UserService } from '../../../services/user.service';
 import { RouterModule } from '@angular/router';
-import { CommonModule, NgFor } from '@angular/common';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-sidemenu',

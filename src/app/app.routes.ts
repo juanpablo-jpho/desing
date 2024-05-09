@@ -30,6 +30,10 @@ export const routes: Routes = [
     path: 'content',
     loadComponent: () => import('./ionic/content/content.component').then((c) => c.ContentComponent)
   },
+  {
+    path: 'icons',
+    loadComponent: () => import('./ionic/icons/icons.component').then((c) => c.IconsComponent)
+  },
 
 
 
