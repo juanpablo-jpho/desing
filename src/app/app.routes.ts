@@ -34,7 +34,10 @@ export const routes: Routes = [
     path: 'icons',
     loadComponent: () => import('./ionic/icons/icons.component').then((c) => c.IconsComponent)
   },
-
+  {
+    path: 'buttons',
+    loadComponent: () => import('./ionic/buttons/buttons.component').then((c) => c.ButtonsComponent)
+  },
 
 
   {

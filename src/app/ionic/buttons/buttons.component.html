@@ -1,0 +1,66 @@
+<ion-header >
+  <ion-toolbar>
+    <ion-title>Buttons</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true">
+
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Buttons</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-button>
+    Click me
+  </ion-button>
+
+  <div>
+    <ion-button expand="block">Block</ion-button> <ion-button expand="full">Full</ion-button>
+  </div>
+
+  <div>
+    <ion-button>Default</ion-button> <ion-button [disabled]="true">Disabled</ion-button>
+  </div>
+
+  <ion-button>
+    <ion-icon slot="icon-only" name="add"></ion-icon>
+  </ion-button>
+
+  <div>
+    <ion-button class="favorito">
+      Click me
+    </ion-button>
+  </div>
+
+  <ion-button>Default</ion-button>
+<ion-button class="ion-text-nowrap" style="max-width: 400px" download="true" 
+  >This is the button that never ends it just goes on and on and on and on and on and on and on and on my
+  friends</ion-button>
+
+  <ion-item>
+    <ion-label class="ion-text-nowrap">Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque pariatur minus, libero repudiandae dicta ipsam delectus enim impedit a? Beatae vel architecto eligendi corrupti ut consectetur repellendus accusantium asperiores totam!</ion-label>
+  </ion-item>
+
+  <form (ngSubmit)="hola()" id="test">
+      nuestro formulario
+    </form>
+
+    
+    <ion-button type="submit" form="test">
+      Click me
+    </ion-button>
+
+    <ion-button (click)="hola()" mode="ios" expand="block"  shape="round" [routerLink]="['/icons']" 
+    >
+      iconos
+    </ion-button>
+
+    <ion-button (ionFocus)="hola()" expand="block" fill="clear" shape="round">
+      Click me
+    </ion-button>
+
+
+</ion-content>
+
