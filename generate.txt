@@ -4,4 +4,6 @@ ionic g s services/ionicons
 
 ionic g c ionic/buttons --spec=false
 
+ionic g c ionic/items --spec=false
+
 

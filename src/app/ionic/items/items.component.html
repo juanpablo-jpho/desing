@@ -1,0 +1,112 @@
+<ion-header translucent="true">
+  <ion-toolbar>
+    <ion-title>Items</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true" color="light">
+
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Items</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- imagenes de apoyo -->
+
+  <ion-item>
+    <ion-icon slot="start" name="add"></ion-icon>
+    <ion-label>Awesome Label</ion-label>
+  </ion-item>
+
+  <ion-item>
+    <ion-avatar slot="start">
+      <img src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+    </ion-avatar>
+    <ion-label>Awesome Label</ion-label>
+  </ion-item>
+
+
+  <!-- texto -->
+
+  <ion-item>
+    <ion-icon slot="start" name="home"></ion-icon>
+    <ion-label class="ion-text-nowrap">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sapiente vitae, provident cum natus laboriosam maxime temporibus consequuntur suscipit vel voluptatibus, magnam debitis atque, a recusandae. Molestiae culpa impedit rem ad.</ion-label>
+  </ion-item>
+
+  <ion-item detail detail-icon="caret-forward" lines="full">
+    <ion-icon slot="start" name="home"></ion-icon>
+    <ion-label class="ion-text-nowrap">
+        <h3>Nombre</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo quam a illo, facilis excepturi explicabo earum dicta dignissimos, exercitationem molestias quasi neque ea non voluptatum laboriosam, autem aliquid voluptate ex.</p>
+    </ion-label>
+  </ion-item>
+
+  <!-- metadatos -->
+
+  <ion-item detail detail-icon="caret-forward" lines="full">
+    <ion-icon slot="start" name="home"></ion-icon>
+    <ion-label class="ion-text-nowrap">
+        <h3>Nombre</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo quam a illo, facilis excepturi explicabo earum dicta dignissimos, exercitationem molestias quasi neque ea non voluptatum laboriosam, autem aliquid voluptate ex.</p>
+    </ion-label>
+    <ion-note slot="end">5</ion-note>
+  </ion-item>
+
+
+
+
+  <!-- acciones -->
+
+      @for (item of opciones; track $index) {
+
+            <ion-item [color]="item.color" detail="true" button 
+            [routerLink]="[item.path]">
+              <ion-icon  slot="start" [name]="item.icon"></ion-icon>
+              <ion-label>{{item.name}}</ion-label>
+            </ion-item>
+
+      }
+
+  <div style="margin:10px"></div>
+
+  <ion-list inset>
+    <ion-list-header>
+      <ion-label>Menu</ion-label>
+    </ion-list-header>
+
+
+  @for (item of opciones; track $index) {
+
+    <ion-item  lines="full">
+      <ion-icon color="primary" slot="start" [name]="item.icon"></ion-icon>
+      <ion-label>{{item.name}}</ion-label>
+      <ion-buttons slot="end">
+          <ion-button>
+            <ion-icon slot="icon-only" name="ellipsis-vertical"></ion-icon>
+          </ion-button>
+          <!-- <ion-button>
+            <ion-icon slot="icon-only" name="trash" color="danger"></ion-icon>
+          </ion-button>
+          <ion-button>
+            <ion-icon slot="icon-only" name="trash" color="danger"></ion-icon>
+          </ion-button> -->
+      </ion-buttons>
+    </ion-item>
+
+  }
+
+</ion-list>
+
+
+    <!-- controles -->
+
+
+
+  <!-- list -->
+
+
+
+
+</ion-content>
+
