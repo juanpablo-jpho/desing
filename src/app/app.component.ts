@@ -1,18 +1,25 @@
 import { Component } from '@angular/core';
-import { IonApp, IonRouterOutlet, IonIcon, IonButton, IonLabel, IonContent } from '@ionic/angular/standalone';
+import { IonApp, IonRouterOutlet, IonIcon, IonButton, IonLabel, IonContent, IonSplitPane, IonHeader, IonToolbar, IonMenu, IonTitle, IonButtons, IonMenuButton } from '@ionic/angular/standalone';
 
 import { addIcons } from 'ionicons';
 import * as all  from 'ionicons/icons';
 
 import { InteractionService } from './services/interaction.service';
 import { IoniconsService } from './services/ionicons.service';
+import { SidemenuComponent } from './shared/components/sidemenu/sidemenu.component';
 
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   standalone: true,
-  imports: [IonContent, IonLabel, IonButton, IonApp, IonRouterOutlet, IonIcon],
+  imports: [IonButtons, 
+    IonHeader, IonSplitPane, IonContent, IonLabel, 
+    IonButton, IonApp, IonRouterOutlet, IonIcon,
+    IonToolbar, IonMenu, IonTitle,
+    SidemenuComponent,
+    IonMenuButton
+  ],
 })
 export class AppComponent {
   

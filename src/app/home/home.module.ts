@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './pages/home/home.component';
 import { ArticleComponent } from './components/article/article.component';
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { IonButtons, IonContent, IonHeader, IonMenuButton, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 import { SharedModule } from '../shared/shared.module';
 import { NotFoundComponent } from '../shared/pages/not-found/not-found.component';
 import { ArticlePageComponent } from './pages/article-page/article-page.component';
@@ -25,7 +25,9 @@ import { HighlightDirective } from '../shared/directives/highlight.directive';
     HighlightDirective,
     IonHeader,
     IonToolbar,
-    IonTitle
+    IonTitle,
+    IonButtons,
+    IonMenuButton
   ]
 })
 export class HomeModule { }

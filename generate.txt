@@ -5,5 +5,8 @@ ionic g s services/ionicons
 ionic g c ionic/buttons --spec=false
 
 ionic g c ionic/items --spec=false
+ionic g c ionic/menu --spec=false
+ionic g c shared/components/sidemenu --spec=false
+
 
 
