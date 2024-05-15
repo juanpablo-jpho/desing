@@ -9,4 +9,4 @@ ionic g c ionic/menu --spec=false
 ionic g c shared/components/sidemenu --spec=false
 
 
-
+ionic g c ionic/sliding --spec=false

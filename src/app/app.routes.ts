@@ -46,6 +46,10 @@ export const routes: Routes = [
     path: 'menu',
     loadComponent: () => import('./ionic/menu/menu.component').then((c) => c.MenuComponent)
   },
+  {
+    path: 'sliding',
+    loadComponent: () => import('./ionic/sliding/sliding.component').then((c) => c.SlidingComponent)
+  },
 
 
   {

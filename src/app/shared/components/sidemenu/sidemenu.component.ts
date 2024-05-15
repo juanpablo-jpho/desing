@@ -37,6 +37,7 @@ export class SidemenuComponent  implements OnInit {
       {name: 'Items', enlace: '/items', icon: 'list'},
       {name: 'Buttons', enlace: '/buttons', icon: 'caret-forward-circle'},
       {name: 'Menú', enlace: '/menu', icon: 'menu'},
+      {name: 'Sliding', enlace: '/sliding', icon: 'hand-left'},
     ];
   }
 
