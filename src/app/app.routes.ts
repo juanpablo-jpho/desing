@@ -58,6 +58,10 @@ export const routes: Routes = [
     path: 'card',
     loadComponent: () => import('./ionic/card/card.component').then((c) => c.CardComponent)
   },
+  {
+    path: 'modal',
+    loadComponent: () => import('./ionic/modal/modal.component').then((c) => c.ModalComponent)
+  },
 
 
   {

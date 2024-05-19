@@ -40,8 +40,9 @@ export class SidemenuComponent  implements OnInit {
       {name: 'Sliding', enlace: '/sliding', icon: 'hand-left'},
       {name: 'Select', enlace: '/select', icon: 'ellipsis-vertical-circle'},
       {name: 'Card', enlace: '/card', icon: 'square'},
+      {name: 'Modal', enlace: '/modal', icon: 'browsers'},
     ];
-  }
+  } 
 
   async closeMenu() {
     const isOpen = await this.menuController.isOpen('sidemenu');

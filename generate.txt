@@ -11,3 +11,9 @@ ionic g c ionic/sliding --spec=false
 
 ionic g c ionic/select --spec=false
 ionic g c ionic/card --spec=false
+
+ionic g c ionic/modal --spec=false
+
+
+
+ionic g c ionic/ion-modal --spec=false
