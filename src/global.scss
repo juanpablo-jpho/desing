@@ -52,3 +52,7 @@
   .class-popover::part(backdrop) {
     background-color: rgb(6, 14, 106);
   }
+
+  .my-custom-class .action-sheet-group {
+    background: #dd8585;
+  }

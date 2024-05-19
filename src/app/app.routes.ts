@@ -66,6 +66,11 @@ export const routes: Routes = [
     path: 'popover',
     loadComponent: () => import('./ionic/popover/popover.component').then((c) => c.PopoverComponent)
   },
+  {
+    path: 'action-sheet',
+    loadComponent: () => import('./ionic/action-sheet/action-sheet.component').then((c) => c.ActionSheetComponent)
+  },
+
 
 
   {

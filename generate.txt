@@ -16,5 +16,6 @@ ionic g c ionic/modal --spec=false
 ionic g c ionic/ion-modal --spec=false
 
 ionic g c ionic/popover --spec=false
-
 ionic g c ionic/ion-popover --spec=false
+
+ionic g c ionic/action-sheet --spec=false
