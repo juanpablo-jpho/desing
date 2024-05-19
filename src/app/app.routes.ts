@@ -50,6 +50,10 @@ export const routes: Routes = [
     path: 'sliding',
     loadComponent: () => import('./ionic/sliding/sliding.component').then((c) => c.SlidingComponent)
   },
+  {
+    path: 'select',
+    loadComponent: () => import('./ionic/select/select.component').then((c) => c.SelectComponent)
+  },
 
 
   {
