@@ -54,6 +54,10 @@ export const routes: Routes = [
     path: 'select',
     loadComponent: () => import('./ionic/select/select.component').then((c) => c.SelectComponent)
   },
+  {
+    path: 'card',
+    loadComponent: () => import('./ionic/card/card.component').then((c) => c.CardComponent)
+  },
 
 
   {
