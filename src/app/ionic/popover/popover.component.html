@@ -1,0 +1,69 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Popover</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="main"></ion-menu-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="presentPopover($event)">
+        <ion-icon slot="icon-only" name="ellipsis-vertical"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Popover</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-button id="click-trigger">Open popover</ion-button>
+
+  <ion-popover trigger="click-trigger" triggerAction="click"
+  cssClass="class-popover">
+    <ng-template>
+      <ion-content class="ion-padding">
+        Hello World!
+      </ion-content>
+    </ng-template>
+  </ion-popover>
+
+
+  <div>
+    <ion-button (click)="openWithProperty($event)">open with isopen</ion-button>
+
+  <ion-popover #popover [isOpen]="isOpen" (didDismiss)="example($event)">
+      <ng-template>
+        <!-- <ion-content class="ion-padding">Hello World!</ion-content> -->
+          <app-ion-popover></app-ion-popover>
+      </ng-template>
+    </ion-popover>
+  </div>
+
+
+
+
+
+
+
+
+
+          <!-- <ion-button (click)="isOpen = false">
+          close
+        </ion-button> --> 
+
+<div class="ion-text-center">
+  <ion-button (click)="presentPopover($event)">Click Me</ion-button>
+</div>
+
+
+
+
+</ion-content>
+
+  

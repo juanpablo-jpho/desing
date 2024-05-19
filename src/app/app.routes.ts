@@ -62,6 +62,10 @@ export const routes: Routes = [
     path: 'modal',
     loadComponent: () => import('./ionic/modal/modal.component').then((c) => c.ModalComponent)
   },
+  {
+    path: 'popover',
+    loadComponent: () => import('./ionic/popover/popover.component').then((c) => c.PopoverComponent)
+  },
 
 
   {

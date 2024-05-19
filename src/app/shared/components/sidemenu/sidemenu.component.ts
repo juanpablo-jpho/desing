@@ -41,6 +41,7 @@ export class SidemenuComponent  implements OnInit {
       {name: 'Select', enlace: '/select', icon: 'ellipsis-vertical-circle'},
       {name: 'Card', enlace: '/card', icon: 'square'},
       {name: 'Modal', enlace: '/modal', icon: 'browsers'},
+      {name: 'Popover', enlace: '/popover', icon: 'stop-circle'},
     ];
   } 
 
