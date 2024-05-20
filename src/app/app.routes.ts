@@ -74,6 +74,10 @@ export const routes: Routes = [
     path: 'alert',
     loadComponent: () => import('./ionic/alert/alert.component').then((c) => c.AlertComponent)
   },
+  {
+    path: 'accordion',
+    loadComponent: () => import('./ionic/accordion/accordion.component').then((c) => c.AccordionComponent)
+  },
 
 
 

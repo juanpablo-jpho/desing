@@ -1,0 +1,113 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Accordion</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="main"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Accordion</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-accordion-group multiple>
+
+    <ion-accordion value="first">
+
+      <ion-item slot="header" color="light">
+        <ion-label>First Accordion</ion-label>
+      </ion-item>
+
+      <div class="ion-padding" slot="content">
+
+          <ion-list>
+            <ion-item detail>
+              <ion-label>Awesome Label</ion-label>
+            </ion-item>
+            <ion-item detail>
+              <ion-label>Awesome Label</ion-label>
+            </ion-item>
+            <ion-item detail>
+              <ion-label>Awesome Label</ion-label>
+            </ion-item>
+            <ion-item detail>
+              <ion-label>Awesome Label</ion-label>
+            </ion-item>
+          </ion-list>
+
+      </div>
+    </ion-accordion>
+
+    <ion-accordion value="second">
+      <ion-item slot="header" color="light">
+        <ion-label>Second Accordion</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">Second Content</div>
+    </ion-accordion>
+
+    <ion-accordion value="third">
+      <ion-item slot="header" color="light">
+        <ion-label>Third Accordion</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">Third Content</div>
+    </ion-accordion>
+
+
+  </ion-accordion-group>
+
+
+
+  <ion-accordion-group #accordionGroup [value]="accordion"
+  expand="inset">
+
+    <ion-accordion value="first">
+      <ion-item slot="header" color="light">
+        <ion-label>First Accordion</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">First Content</div>
+    </ion-accordion>
+    <ion-accordion value="second">
+      <ion-item slot="header" color="light">
+        <ion-label>Second Accordion</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">Second Content</div>
+    </ion-accordion>
+    <ion-accordion value="3">
+      <ion-item slot="header" color="light">
+        <ion-label>Third Accordion</ion-label>
+      </ion-item>
+      <div class="ion-padding" slot="content">Third Content</div>
+    </ion-accordion>
+  </ion-accordion-group>
+  
+  <ion-button (click)="toggleAccordion()">Toggle Second Accordion</ion-button>
+
+
+  <ion-accordion-group expand="inset">
+    <!-- <ion-card> -->
+      <ion-accordion value="first">
+        <ion-item slot="header"  color="success">
+          <ion-label>First Accordion</ion-label>
+        </ion-item>
+        <div class="ion-padding" slot="content">
+  
+          <h1>Titulo</h1>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, consequatur! Quaerat perspiciatis, vitae repellat voluptates tempora assumenda eos labore provident voluptate numquam exercitationem hic maxime inventore amet adipisci beatae alias?</p>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, consequatur! Quaerat perspiciatis, vitae repellat voluptates tempora assumenda eos labore provident voluptate numquam exercitationem hic maxime inventore amet adipisci beatae alias?</p>
+  
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, consequatur! Quaerat perspiciatis, vitae repellat voluptates tempora assumenda eos labore provident voluptate numquam exercitationem hic maxime inventore amet adipisci beatae alias?</p>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, consequatur! Quaerat perspiciatis, vitae repellat voluptates tempora assumenda eos labore provident voluptate numquam exercitationem hic maxime inventore amet adipisci beatae alias?</p>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, consequatur! Quaerat perspiciatis, vitae repellat voluptates tempora assumenda eos labore provident voluptate numquam exercitationem hic maxime inventore amet adipisci beatae alias?</p>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, consequatur! Quaerat perspiciatis, vitae repellat voluptates tempora assumenda eos labore provident voluptate numquam exercitationem hic maxime inventore amet adipisci beatae alias?</p>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloremque, consequatur! Quaerat perspiciatis, vitae repellat voluptates tempora assumenda eos labore provident voluptate numquam exercitationem hic maxime inventore amet adipisci beatae alias?</p>
+  
+        </div>
+      </ion-accordion>
+    
+    <!-- </ion-card> -->
+  </ion-accordion-group>
