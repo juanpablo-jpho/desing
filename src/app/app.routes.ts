@@ -70,6 +70,10 @@ export const routes: Routes = [
     path: 'action-sheet',
     loadComponent: () => import('./ionic/action-sheet/action-sheet.component').then((c) => c.ActionSheetComponent)
   },
+  {
+    path: 'alert',
+    loadComponent: () => import('./ionic/alert/alert.component').then((c) => c.AlertComponent)
+  },
 
 
 

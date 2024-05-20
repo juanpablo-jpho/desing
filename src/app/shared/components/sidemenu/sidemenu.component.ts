@@ -43,6 +43,7 @@ export class SidemenuComponent  implements OnInit {
       {name: 'Modal', enlace: '/modal', icon: 'browsers'},
       {name: 'Popover', enlace: '/popover', icon: 'stop-circle'},
       {name: 'Action Sheet', enlace: '/action-sheet', icon: 'filter-circle'},
+      {name: 'Alert', enlace: '/alert', icon: 'alert-circle'},
       
     ];
   } 

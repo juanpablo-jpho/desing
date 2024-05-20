@@ -19,3 +19,5 @@ ionic g c ionic/popover --spec=false
 ionic g c ionic/ion-popover --spec=false
 
 ionic g c ionic/action-sheet --spec=false
+
+ionic g c ionic/alert --spec=false
