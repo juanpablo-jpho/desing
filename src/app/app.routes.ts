@@ -78,6 +78,10 @@ export const routes: Routes = [
     path: 'accordion',
     loadComponent: () => import('./ionic/accordion/accordion.component').then((c) => c.AccordionComponent)
   },
+  {
+    path: 'toast',
+    loadComponent: () => import('./ionic/toast/toast.component').then((c) => c.ToastComponent)
+  },
 
 
 

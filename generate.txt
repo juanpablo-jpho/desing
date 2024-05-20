@@ -23,3 +23,5 @@ ionic g c ionic/action-sheet --spec=false
 ionic g c ionic/alert --spec=false
 
 ionic g c ionic/accordion --spec=false
+
+ionic g c ionic/toast --spec=false
