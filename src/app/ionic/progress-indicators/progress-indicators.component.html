@@ -1,0 +1,138 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Progress Indicators</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="main"></ion-menu-button>
+    </ion-buttons>
+    @if (cargando) {
+      <ion-progress-bar reversed="true" color="success" type="indeterminate"></ion-progress-bar>
+    }
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Progress Indicators</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-progress-bar [value]="progress"></ion-progress-bar>
+
+  @if (cargando) {
+    <div class="ion-text-center">
+      <ion-spinner class="ion-spinner-custom" name="bubbles"></ion-spinner>
+    </div>
+  }
+
+  @if (!cargando) {
+    <ion-list>
+      <ion-list-header>Albums</ion-list-header>
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <ion-icon style="width: 100%; height: 100%" name="musical-notes"></ion-icon>
+        </ion-thumbnail>
+        <ion-label>
+          <h3>Abbey Road</h3>
+          <p>The Beatles</p>
+          <!-- <p>1969</p> -->
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Enim ipsam architecto doloribus voluptatem ab corporis, quam dignissimos dolor atque molestias et voluptate ullam dolore in nihil? Deserunt mollitia accusamus eaque?
+          </p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+  } @else {
+    <ion-list>
+      <ion-list-header>
+        <ion-skeleton-text [animated]="true" style="width: 80px"></ion-skeleton-text>
+      </ion-list-header>
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+        </ion-thumbnail>
+        <ion-label>
+          <h3>
+            <ion-skeleton-text [animated]="true" style="width: 80%;"></ion-skeleton-text>
+          </h3>
+          <p>
+            <ion-skeleton-text [animated]="true" style="width: 60%;"></ion-skeleton-text>
+          </p>
+          <p>
+            <ion-skeleton-text [animated]="true" style="width: 100%"></ion-skeleton-text>
+          </p>
+          <p>
+            <ion-skeleton-text [animated]="true" style="width: 100%"></ion-skeleton-text>
+          </p>
+          <p>
+            <ion-skeleton-text [animated]="true" style="width: 100%"></ion-skeleton-text>
+          </p>
+          <p>
+            <ion-skeleton-text [animated]="true" style="width: 100%"></ion-skeleton-text>
+          </p>
+        
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+  }
+  
+  <div class="ion-text-center">
+    <ion-button (click)="loaded = !loaded">Toggle</ion-button>
+  </div>
+
+
+  <ion-item>
+    <ion-label>Default</ion-label>
+    <ion-spinner></ion-spinner>
+  </ion-item>
+  
+  <ion-item>
+    <ion-label>Dots</ion-label>
+    <ion-spinner name="dots"></ion-spinner>
+  </ion-item>
+  
+  <ion-item>
+    <ion-label>Lines</ion-label>
+    <ion-spinner name="lines"></ion-spinner>
+  </ion-item>
+  
+  <ion-item>
+    <ion-label>Lines Small</ion-label>
+    <ion-spinner name="lines-small"></ion-spinner>
+  </ion-item>
+  
+  <ion-item>
+    <ion-label>Lines Sharp</ion-label>
+    <ion-spinner name="lines-sharp"></ion-spinner>
+  </ion-item>
+  
+  <ion-item>
+    <ion-label>Lines Sharp Small</ion-label>
+    <ion-spinner name="lines-sharp-small"></ion-spinner>
+  </ion-item>
+  
+  <ion-item>
+    <ion-label>Bubbles</ion-label>
+    <ion-spinner name="bubbles"></ion-spinner>
+  </ion-item>
+  
+  <ion-item>
+    <ion-label>Circles</ion-label>
+    <ion-spinner name="circles"></ion-spinner>
+  </ion-item>
+  
+  <ion-item>
+    <ion-label>Circular</ion-label>
+    <ion-spinner name="circular"></ion-spinner>
+  </ion-item>
+  
+  <ion-item>
+    <ion-label>Crescent</ion-label>
+    <ion-spinner name="crescent"></ion-spinner>
+  </ion-item>
+
+
+</ion-content>

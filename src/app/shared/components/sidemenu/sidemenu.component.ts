@@ -47,6 +47,7 @@ export class SidemenuComponent  implements OnInit {
       {name: 'Accordion', enlace: '/accordion', icon: 'swap-vertical'},
       {name: 'Toast', enlace: '/toast', icon: 'remove'},
       {name: 'Loading', enlace: '/loading', icon: 'refresh'},
+      {name: 'Progress Indicators', enlace: '/progress-indicators', icon: 'hourglass'},
 
       
       

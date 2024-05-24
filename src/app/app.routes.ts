@@ -86,6 +86,11 @@ export const routes: Routes = [
     path: 'loading',
     loadComponent: () => import('./ionic/loading/loading.component').then((c) => c.LoadingComponent)
   },
+  {
+    path: 'progress-indicators',
+    loadComponent: () => import('./ionic/progress-indicators/progress-indicators.component').then((c) => c.ProgressIndicatorsComponent)
+  },
+
 
 
 
