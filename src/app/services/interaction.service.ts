@@ -6,14 +6,23 @@ import { LoadingController } from '@ionic/angular/standalone';
 })
 export class InteractionService {
 
+  private loading: HTMLIonLoadingElement
+
   constructor(private loadingCtrl: LoadingController) { }
 
-  async showLoading() {
-    console.log('showLoading()');
-    const loading = await this.loadingCtrl.create({
-      message: 'cargandoo.',
-      duration: 3000,
+  async showLoading(message: string = 'Cargando...') {
+    this.loading = await this.loadingCtrl.create({
+      message
     });
-    loading.present();
+    this.loading.present();
   }
+
+  async dismissLoading() {
+    if (this.loading) {
+      await this.loading.dismiss();
+    }
+    this.loading = null;
+  }
+
+  
 }

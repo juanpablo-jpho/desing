@@ -82,6 +82,10 @@ export const routes: Routes = [
     path: 'toast',
     loadComponent: () => import('./ionic/toast/toast.component').then((c) => c.ToastComponent)
   },
+  {
+    path: 'loading',
+    loadComponent: () => import('./ionic/loading/loading.component').then((c) => c.LoadingComponent)
+  },
 
 
 

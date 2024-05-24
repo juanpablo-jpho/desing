@@ -25,3 +25,13 @@ ionic g c ionic/alert --spec=false
 ionic g c ionic/accordion --spec=false
 
 ionic g c ionic/toast --spec=false
+
+ionic g c ionic/loading --spec=false
+
+
+
+
+
+
+
+ionic g s services/interaction

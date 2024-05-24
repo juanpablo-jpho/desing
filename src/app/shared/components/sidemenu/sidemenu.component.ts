@@ -46,6 +46,9 @@ export class SidemenuComponent  implements OnInit {
       {name: 'Alert', enlace: '/alert', icon: 'alert-circle'},
       {name: 'Accordion', enlace: '/accordion', icon: 'swap-vertical'},
       {name: 'Toast', enlace: '/toast', icon: 'remove'},
+      {name: 'Loading', enlace: '/loading', icon: 'refresh'},
+
+      
       
     ];
   } 

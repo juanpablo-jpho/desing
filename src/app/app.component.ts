@@ -18,7 +18,7 @@ import { SidemenuComponent } from './shared/components/sidemenu/sidemenu.compone
     IonButton, IonApp, IonRouterOutlet, IonIcon,
     IonToolbar, IonMenu, IonTitle,
     SidemenuComponent,
-    IonMenuButton
+    IonMenuButton,
   ],
 })
 export class AppComponent {
@@ -44,7 +44,7 @@ export class AppComponent {
   //   });
 
   //   loading.present();
-     this.interactionService.showLoading();
+    //  this.interactionService.showLoading();
   }
   
   nada() {}
