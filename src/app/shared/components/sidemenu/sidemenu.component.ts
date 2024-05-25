@@ -55,6 +55,7 @@ export class SidemenuComponent  implements OnInit {
       {name: 'Toggle', enlace: '/toggle', icon: 'toggle'},
       {name: 'Infinite Scroll', enlace: '/ion-infinite-scroll', icon: 'infinite'},
       {name: 'Datetime', enlace: '/datetime', icon: 'calendar'},
+      {name: 'Tabs', enlace: '/tabs', icon: 'ellipsis-horizontal'},
       
 
       

@@ -1,12 +1,14 @@
 import { CommonModule, NgFor } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { IonToolbar, IonTitle, IonHeader, IonContent, 
   IonButtons, IonMenuButton, IonList, IonItem, IonIcon, IonButton, 
   IonListHeader, IonLabel, IonText,
   IonCheckbox,
   IonRadioGroup,
-  IonRadio} from "@ionic/angular/standalone";
+  IonRadio,
+  IonRouterLink} from "@ionic/angular/standalone";
 
 
 @Component({
@@ -24,6 +26,9 @@ import { IonToolbar, IonTitle, IonHeader, IonContent,
     IonText, IonCheckbox,
     FormsModule,
     ReactiveFormsModule,
+    RouterModule,
+    IonRouterLink
+
     // CommonModule, 
     // NgFor
   ]
