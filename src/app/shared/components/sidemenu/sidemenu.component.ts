@@ -53,6 +53,8 @@ export class SidemenuComponent  implements OnInit {
       {name: 'Checkbox', enlace: '/checkbox', icon: 'checkbox'},
       {name: 'Radio', enlace: '/radio', icon: 'radio-button-on'},
       {name: 'Toggle', enlace: '/toggle', icon: 'toggle'},
+      {name: 'Infinite Scroll', enlace: '/ion-infinite-scroll', icon: 'infinite'},
+      {name: 'Datetime', enlace: '/datetime', icon: 'calendar'},
       
 
       

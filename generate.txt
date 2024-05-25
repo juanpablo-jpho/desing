@@ -40,3 +40,10 @@ ionic g c ionic/checkbox --spec=false
 ionic g c ionic/radio --spec=false
 
 ionic g c ionic/toggle --spec=false
+
+ionic g c ionic/ion-infinite-scroll --spec=false
+
+ionic g c ionic/datetime --spec=false
+
+ionic g c ionic/tabs --spec=false
+

@@ -110,6 +110,36 @@ export const routes: Routes = [
     path: 'toggle',
     loadComponent: () => import('./ionic/toggle/toggle.component').then((c) => c.ToggleComponent)
   },
+  {
+    path: 'ion-infinite-scroll',
+    loadComponent: () => import('./ionic/ion-infinite-scroll/ion-infinite-scroll.component').then((c) => c.IonInfiniteScrollComponent)
+  },
+  {
+    path: 'datetime',
+    loadComponent: () => import('./ionic/datetime/datetime.component').then((c) => c.DatetimeComponent)
+  },
+  {
+    path: 'tabs',
+    loadComponent: () => import('./ionic/tabs/tabs.component').then((c) => c.TabsComponent),   
+    children: [
+      {
+        path: 'radio',
+        loadComponent: () => import('./ionic/radio/radio.component').then((c) => c.RadioComponent)
+      },
+      {
+        path: 'toggle',
+        loadComponent: () => import('./ionic/toggle/toggle.component').then((c) => c.ToggleComponent)
+      },
+      {
+        path: 'ion-infinite-scroll',
+        loadComponent: () => import('./ionic/ion-infinite-scroll/ion-infinite-scroll.component').then((c) => c.IonInfiniteScrollComponent)
+      },
+      {
+        path: 'datetime',
+        loadComponent: () => import('./ionic/datetime/datetime.component').then((c) => c.DatetimeComponent)
+      },
+    ]
+  },
 
 
   

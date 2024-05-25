@@ -1,0 +1,57 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Datetime</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="main"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Datetime</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-datetime [firstDayOfWeek]="1" presentation="time-date">
+    <span slot="time-label">Tiempo</span>
+  </ion-datetime>
+
+
+  <ion-datetime-button datetime="datetime"></ion-datetime-button>
+
+    <ion-modal [keepContentsMounted]="true">
+      <ng-template>
+        <ion-datetime value="2024-04-21T00:00:00" id="datetime" min="2024-03-01T00:00:00"></ion-datetime>
+      </ng-template>
+    </ion-modal>
+
+
+
+  <ion-item>
+    <ion-label>Selecciona una fecha</ion-label>
+    <ion-datetime-button datetime="datetime-1"></ion-datetime-button>
+  </ion-item>
+
+  <div class="ion-text-center">
+    <ion-button (click)="save()" shape="round">
+      guardar
+    </ion-button>
+  </div>
+
+  <ion-modal [keepContentsMounted]="true">
+    <ng-template>
+      <ion-datetime (ionChange)="changeTime($event)"  multiple
+      [(ngModel)]="date"  id="datetime-1"  presentation="date" 
+      [showDefaultButtons]="true"
+      #datetime
+      doneText="Ok" cancelText="Cancelar">
+        <span slot="title">Select a Reservation Date</span>
+      </ion-datetime >
+    </ng-template>
+  </ion-modal>
+
+
+</ion-content>
