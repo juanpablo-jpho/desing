@@ -51,6 +51,8 @@ export class SidemenuComponent  implements OnInit {
       {name: 'Inputs', enlace: '/input', icon: 'keypad'},
       {name: 'Textarea', enlace: '/textarea', icon: 'document-text'},
       {name: 'Checkbox', enlace: '/checkbox', icon: 'checkbox'},
+      {name: 'Radio', enlace: '/radio', icon: 'radio-button-on'},
+      
 
       
       

@@ -1,0 +1,71 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Radio</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="main"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Radio</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-radio-group value="strawberries">
+    <ion-radio value="grapes">Grapes</ion-radio><br />
+    <ion-radio value="strawberries">Strawberries</ion-radio><br />
+    <ion-radio value="pineapple">Pineapple</ion-radio><br />
+    <ion-radio value="cherries">Cherries</ion-radio>
+  </ion-radio-group>
+
+  <ion-list>
+    <ion-radio-group value="start">
+      <ion-item>
+        <ion-radio value="start" justify="start">Packed at the Start of Line</ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  
+    <ion-radio-group value="end">
+      <ion-item>
+        <ion-radio value="end" justify="end">Packed at the End of Line</ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  
+    <ion-radio-group value="space-between" [allowEmptySelection]="true">
+      <ion-item>
+        <ion-radio value="space-between" justify="space-between">Space Between Label and Control</ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-radio value="space-between-1" justify="space-between">Space Between Label and Control</ion-radio>
+      </ion-item>
+    </ion-radio-group>
+
+  </ion-list>
+
+
+
+    <ion-list>
+      <ion-list-header>
+        <ion-label>Selecciona en rol</ion-label>
+      </ion-list-header>
+
+      <ion-radio-group
+      [(ngModel)]="rolSelected">
+
+        @for (rol of roles; track $index) {
+          <ion-item>
+            <ion-radio [value]="rol">{{ rol.description }}</ion-radio>
+          </ion-item>
+        }
+      </ion-radio-group>
+
+    </ion-list>
+  
+
+
+
+</ion-content>

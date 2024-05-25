@@ -102,6 +102,10 @@ export const routes: Routes = [
     path: 'checkbox',
     loadComponent: () => import('./ionic/checkbox/checkbox.component').then((c) => c.CheckboxComponent)
   },
+  {
+    path: 'radio',
+    loadComponent: () => import('./ionic/radio/radio.component').then((c) => c.RadioComponent)
+  },
 
 
   
