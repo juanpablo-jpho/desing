@@ -38,3 +38,5 @@ ionic g c ionic/textarea --spec=false
 ionic g c ionic/checkbox --spec=false
 
 ionic g c ionic/radio --spec=false
+
+ionic g c ionic/toggle --spec=false

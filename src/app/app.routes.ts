@@ -106,6 +106,10 @@ export const routes: Routes = [
     path: 'radio',
     loadComponent: () => import('./ionic/radio/radio.component').then((c) => c.RadioComponent)
   },
+  {
+    path: 'toggle',
+    loadComponent: () => import('./ionic/toggle/toggle.component').then((c) => c.ToggleComponent)
+  },
 
 
   
