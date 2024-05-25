@@ -94,6 +94,10 @@ export const routes: Routes = [
     path: 'input',
     loadComponent: () => import('./ionic/input/input.component').then((c) => c.InputComponent)
   },
+  {
+    path: 'textarea',
+    loadComponent: () => import('./ionic/textarea/textarea.component').then((c) => c.TextareaComponent)
+  },
 
 
   

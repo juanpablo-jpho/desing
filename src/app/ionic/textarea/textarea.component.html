@@ -1,0 +1,80 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Textarea</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="main"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Textarea</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list>
+    <ion-item>
+      <ion-textarea label="Regular textarea" placeholder="Type something here"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-textarea [readonly]="true" label="Readonly textarea" placeholder="Can't edit this"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-textarea [disabled]="true" label="Disabled textarea" placeholder="Can't type here"></ion-textarea>
+    </ion-item>
+  </ion-list>
+
+
+  <ion-item>
+    <ion-input label="Input"></ion-input>
+  </ion-item>
+
+
+  <ion-list>
+    <ion-item>
+      <ion-textarea label="Default label" placeholder="Enter text"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-textarea label="Fixed label" labelPlacement="fixed" placeholder="Enter text"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-textarea label="Stacked label" labelPlacement="stacked" placeholder="Enter text"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-textarea label="Floating label" labelPlacement="floating" placeholder="Enter text"></ion-textarea>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-item>
+      <ion-textarea  labelPlacement="floating" value="Lorem Ipsum">
+        <div slot="label">
+          Comments <ion-text color="danger">(Required)</ion-text>
+          <ion-icon  name="add"></ion-icon>
+        </div>
+      </ion-textarea>
+    </ion-item>
+  </ion-list>
+
+  <ion-textarea label="Solid textarea" labelPlacement="floating" fill="solid" 
+  placeholder="Enter text" mode="md"></ion-textarea>
+
+  <br />
+
+<ion-textarea #textarea label="Outline textarea" labelPlacement="floating" 
+fill="outline" placeholder="Enter text" mode="md"
+helperText="Enter a valid email"
+[counter]="true"
+maxlength="200"
+[rows]="5"  (ionInput)="action($event)">
+<ion-icon slot="start" name="lock-closed" aria-hidden="true"></ion-icon>
+<ion-icon slot="end" name="trash" aria-hidden="true"></ion-icon>
+</ion-textarea>
+
+
+</ion-content>
