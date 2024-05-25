@@ -30,3 +30,5 @@ ionic g c ionic/loading --spec=false
 ionic g s services/interaction
 
 ionic g c ionic/progress-indicators --spec=false
+
+ionic g c ionic/input --spec=false

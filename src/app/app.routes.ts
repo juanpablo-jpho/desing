@@ -90,10 +90,13 @@ export const routes: Routes = [
     path: 'progress-indicators',
     loadComponent: () => import('./ionic/progress-indicators/progress-indicators.component').then((c) => c.ProgressIndicatorsComponent)
   },
+  {
+    path: 'input',
+    loadComponent: () => import('./ionic/input/input.component').then((c) => c.InputComponent)
+  },
 
 
-
-
+  
   {
     path: '',
     redirectTo: 'home',

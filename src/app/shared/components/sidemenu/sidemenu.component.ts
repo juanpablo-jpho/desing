@@ -48,6 +48,7 @@ export class SidemenuComponent  implements OnInit {
       {name: 'Toast', enlace: '/toast', icon: 'remove'},
       {name: 'Loading', enlace: '/loading', icon: 'refresh'},
       {name: 'Progress Indicators', enlace: '/progress-indicators', icon: 'hourglass'},
+      {name: 'Inputs', enlace: '/input', icon: 'keypad'},
 
       
       

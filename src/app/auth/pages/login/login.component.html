@@ -7,8 +7,7 @@
     @if (!enableLoginWithEmailAndPassword) {
         @for (provider of providers; track $index) {
 
-          <ion-icon name="logo-ionic" size="large" color="primary"></ion-icon>
-  
+       
           <div style="text-align: center">
             <button (click)="loginWithProvider(provider)" 
             [ngStyle]="{'background-color': provider.color, 'color': provider.textColor}">
@@ -93,5 +92,3 @@
     }
 
 </ion-content>
-
-<ion-label>Label</ion-label>
