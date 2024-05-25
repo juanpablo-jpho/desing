@@ -98,6 +98,10 @@ export const routes: Routes = [
     path: 'textarea',
     loadComponent: () => import('./ionic/textarea/textarea.component').then((c) => c.TextareaComponent)
   },
+  {
+    path: 'checkbox',
+    loadComponent: () => import('./ionic/checkbox/checkbox.component').then((c) => c.CheckboxComponent)
+  },
 
 
   

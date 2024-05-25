@@ -50,6 +50,7 @@ export class SidemenuComponent  implements OnInit {
       {name: 'Progress Indicators', enlace: '/progress-indicators', icon: 'hourglass'},
       {name: 'Inputs', enlace: '/input', icon: 'keypad'},
       {name: 'Textarea', enlace: '/textarea', icon: 'document-text'},
+      {name: 'Checkbox', enlace: '/checkbox', icon: 'checkbox'},
 
       
       
