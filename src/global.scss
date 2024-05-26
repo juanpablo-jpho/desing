@@ -32,9 +32,9 @@
  * https://ionicframework.com/docs/theming/dark-mode
  */
 
-/* @import "@ionic/angular/css/palettes/dark.always.css"; */
-/* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import '@ionic/angular/css/palettes/dark.system.css';
+// @import "@ionic/angular/css/palettes/dark.always.css";
+@import "@ionic/angular/css/palettes/dark.class.css";
+// @import '@ionic/angular/css/palettes/dark.system.css';
 
 
 .class-popover {
@@ -63,8 +63,8 @@
 
 
   ion-loading.custom-loading {
-    --background: #e3edff;
-    --spinner-color: #1c6dff;
-  
-    color: #1c6dff;
-  }
+  --background: #e3edff;
+  --spinner-color: #1c6dff;
+
+  color: #1c6dff;
+}
