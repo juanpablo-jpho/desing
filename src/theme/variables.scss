@@ -1,2 +1,46 @@
 // For information on how to create your own theme, please see:
 // http://ionicframework.com/docs/theming/
+
+:root {
+
+    --ion-color-primary: #00e7eb;
+	--ion-color-primary-rgb: 0,231,235;
+	--ion-color-primary-contrast: #000000;
+	--ion-color-primary-contrast-rgb: 0,0,0;
+	--ion-color-primary-shade: #00cbcf;
+	--ion-color-primary-tint: #1ae9ed;
+
+	--ion-color-favorito: #69bb7b;
+	--ion-color-favorito-rgb: 105,187,123;
+	--ion-color-favorito-contrast: #000000;
+	--ion-color-favorito-contrast-rgb: 0,0,0;
+	--ion-color-favorito-shade: #5ca56c;
+	--ion-color-favorito-tint: #78c288;
+
+    --ion-color-peligro: #bb6870;
+	--ion-color-peligro-rgb: 187,104,112;
+	--ion-color-peligro-contrast: #ffffff;
+	--ion-color-peligro-contrast-rgb: 0,0,0;
+	--ion-color-peligro-shade: #a55c63;
+	--ion-color-peligro-tint: #c2777e;
+
+}
+
+
+.ion-color-peligro {
+	--ion-color-base: var(--ion-color-peligro);
+	--ion-color-base-rgb: var(--ion-color-peligro-rgb);
+	--ion-color-contrast: var(--ion-color-peligro-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-peligro-contrast-rgb);
+	--ion-color-shade: var(--ion-color-peligro-shade);
+	--ion-color-tint: var(--ion-color-peligro-tint);
+}
+
+.ion-color-favorito {
+	--ion-color-base: var(--ion-color-favorito);
+	--ion-color-base-rgb: var(--ion-color-favorito-rgb);
+	--ion-color-contrast: var(--ion-color-favorito-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-favorito-contrast-rgb);
+	--ion-color-shade: var(--ion-color-favorito-shade);
+	--ion-color-tint: var(--ion-color-favorito-tint);
+}
