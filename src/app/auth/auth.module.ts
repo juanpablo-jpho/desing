@@ -2,7 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { AuthRoutingModule } from './auth-routing.module';
-import { IonContent, IonIcon, IonLabel } from '@ionic/angular/standalone';
+import { IonBackButton, IonButton, IonButtons, IonCard, IonCol, IonContent, 
+  IonGrid, IonHeader, IonIcon, IonInput, IonInputPasswordToggle, IonItem, 
+  IonLabel, IonList, IonMenuButton, IonModal, IonChip, IonListHeader,
+  IonRow, IonText, IonTitle, IonToolbar, IonAvatar, 
+  IonFooter,
+  IonRouterLink} from '@ionic/angular/standalone';
 import { LoginComponent } from './pages/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegistroComponent } from './pages/registro/registro.component';
@@ -27,12 +32,18 @@ import { SharedModule } from '../shared/shared.module';
   imports: [
     CommonModule,
     AuthRoutingModule,
-    IonContent,
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
-    IonLabel,
-    IonIcon,
+    IonContent, IonHeader, IonToolbar, IonTitle,
+    IonItem, IonAvatar, IonLabel, IonCard, IonBackButton, IonButtons,
+    IonMenuButton, IonBackButton, IonList, IonItem, IonButton,
+    IonModal, IonGrid, IonRow, IonCol,
+    IonInput, IonInputPasswordToggle,
+    IonCard, IonText,
+    IonChip, IonIcon, 
+    IonListHeader, IonList, IonFooter,
+    IonRouterLink
   ]
 })
 export class AuthModule { }

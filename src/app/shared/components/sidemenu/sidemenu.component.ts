@@ -63,8 +63,8 @@ export class SidemenuComponent  implements OnInit {
       {name: 'Datetime', enlace: '/datetime', icon: 'calendar'},
       {name: 'Tabs', enlace: '/tabs', icon: 'ellipsis-horizontal'},
       {name: 'Segment', enlace: '/segment', icon: 'code-working'},
-      
-
+      {name: 'Interacción service', enlace: '/interaction', icon: 'help-circle'},
+      {name: 'Grid', enlace: '/grid', icon: 'apps'},
       
       
     ];
@@ -116,5 +116,3 @@ interface Menu {
 }
 
 
-// {name: 'Interacción service', enlace: '/interaction', icon: 'help-circle'},
-// {name: 'Grid', enlace: '/grid', icon: 'apps'},

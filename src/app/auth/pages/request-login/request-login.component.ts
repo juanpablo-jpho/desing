@@ -5,6 +5,8 @@ import { OAuthProvider } from '@angular/fire/auth';
 import { Models } from 'src/app/models/models';
 import { FirestoreService } from '../../../firebase/firestore.service';
 import { UserService } from 'src/app/services/user.service';
+import { InteractionService } from 'src/app/services/interaction.service';
+import { MenuController } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-request-login',
@@ -20,20 +22,27 @@ export class RequestLoginComponent  implements OnInit {
   message: string = 'procesando...';
 
   constructor(private route: ActivatedRoute,
-              private router: Router) { 
+              private router: Router,
+              private interactionService: InteractionService,
+              private menuController: MenuController) { 
 
                 this.getQueryParams();
                 this.getTokenOfProvider();
                 this.userService.validateHasProfile = false;
+                this.menuController.enable(false, 'main')
+                
   }
 
-  ngOnInit() {}
+  ngOnInit() {
 
-  getQueryParams() {
+  }
+
+  async getQueryParams() {
     const queryParams: any = this.route.snapshot.queryParams;
     console.log('queryParams -> ', queryParams);
     if (queryParams.provider && queryParams.intentId) {
       const provider = queryParams.provider;
+      await this.interactionService.showLoading('Procesando...')
       this.authenticationService.loginWithProvider(provider)
       this.router.navigate(['/user/request-login'], { queryParams: { intentId: queryParams.intentId}})
     }
@@ -41,6 +50,7 @@ export class RequestLoginComponent  implements OnInit {
   }
 
   async getTokenOfProvider() {
+      await this.interactionService.showLoading('Redirigiendo...')
       const result =  await this.authenticationService.getRedirectResult();
       console.log('getRedirectResult -> ', result);
       if (result) {
@@ -49,6 +59,8 @@ export class RequestLoginComponent  implements OnInit {
         console.log('credential -> ', credential);
         const token = credential.idToken ? credential.idToken : credential.accessToken;
         this.saveToken(token);
+      } else {
+        this.interactionService.dismissLoading();
       }
   }
 

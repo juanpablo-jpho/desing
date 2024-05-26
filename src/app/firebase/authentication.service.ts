@@ -159,8 +159,9 @@ export class AuthenticationService {
       }
       console.log('credentials -> ', credential);
       if (credential) {
-        await signInWithCredential(this.auth, credential);
+        return await signInWithCredential(this.auth, credential);
       }
+      return null;
   }
 
   getRedirectResult() {

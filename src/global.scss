@@ -36,6 +36,24 @@
 @import "@ionic/angular/css/palettes/dark.class.css";
 // @import '@ionic/angular/css/palettes/dark.system.css';
 
+ion-button {
+  text-transform: unset !important;
+  letter-spacing: unset !important
+}
+
+ion-split-pane {
+  --side-max-width: 100 !important;
+  --side-width: 100 !important;
+}
+
+.content-center {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+
 
 .class-popover {
     --background: rgba(40, 173, 218, 0.6);
