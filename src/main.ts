@@ -24,7 +24,7 @@ if (environment.production) {
 bootstrapApplication(AppComponent, {
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    provideIonicAngular(),
+    provideIonicAngular({backButtonText: '', innerHTMLTemplatesEnabled: true}),
     provideRouter(routes),
     provideHttpClient(),
     FileSaverModule,

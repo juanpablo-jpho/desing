@@ -8,18 +8,18 @@ import { AlertController, IonicSafeString,
 export class InteractionService {
 
   private loading: HTMLIonLoadingElement
-  private  alert: HTMLIonAlertElement;
 
   constructor(private loadingCtrl: LoadingController,
-              public toastCtrl: ToastController,
-              public alertController: AlertController
+          private toastCtrl: ToastController,
+          private alertController: AlertController
   ) { }
 
   async showLoading(message: string = 'Cargando...') {
     this.loading = await this.loadingCtrl.create({
-      message
+      message,
+      backdropDismiss: true,
     });
-    this.loading.present();
+    await this.loading.present();
   }
 
   async dismissLoading() {
@@ -33,14 +33,13 @@ export class InteractionService {
     const toast = await this.toastCtrl.create({
       message,
       duration,
-      cssClass: 'tipoletra',
       position,
       color: 'dark'
     });
-    toast.present();
+    await toast.present();
   }
 
-  async preguntaAlert(header: string, message: string, textCANCEL: string = null, textOK: string = 'OK'): Promise<boolean> {
+  async presentAlert(header: string, message: string, textCANCEL: string = null, textOK: string = 'OK'): Promise<boolean> {
     return new Promise(  async  (resolve) => { 
         let buttons = [];
         if (textCANCEL) {
@@ -58,24 +57,18 @@ export class InteractionService {
             resolve(true);
           }
         })  
-        if (!this.alert) {
-          this.alert = await this.alertController.create({
+        const alert = await this.alertController.create({
             header,
             message: (new IonicSafeString(message)).value,
+            // message,
             buttons,
+            backdropDismiss: false
           });
-          await this.alert.present();
-          await this.alert.onWillDismiss();
-        }
-        this.alert = null;
+        await alert.present();
     });
   }
 
-  closeAlert() {
-    if (this.alert) {
-      this.alert.dismiss();
-    }
-  }
+
 
 
   

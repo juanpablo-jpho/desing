@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-title>Interaction</ion-title>
     <ion-buttons slot="start">
-      <ion-menu-button menu="main"></ion-menu-button>
+      <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -14,14 +14,20 @@
       <ion-title size="large">Interaction</ion-title>
     </ion-toolbar>
   </ion-header>
+
+  <ion-item>
+    <ion-label>Awesome Label</ion-label>
+    <ion-buttons slot="end">
+      <ion-button (click)="eliminar()">
+        <ion-icon slot="icon-only" name="trash" color="danger"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-item>
+
+  <ion-button (click)="save()" shape="round">
+    guardar
+  </ion-button>
+
+
 </ion-content>
 
-
-<ion-item>
-  <ion-label>Awesome Label</ion-label>
-  <ion-buttons slot="end">
-    <ion-button (click)="eliminar()">
-      <ion-icon slot="icon-only" name="trash"></ion-icon>
-    </ion-button>
-  </ion-buttons>
-</ion-item>
