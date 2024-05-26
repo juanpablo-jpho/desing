@@ -148,6 +148,10 @@ export const routes: Routes = [
     path: 'interaction',
     loadComponent: () => import('./ionic/interaction/interaction.component').then((c) => c.InteractionComponent)
   },
+  {
+    path: 'segment',
+    loadComponent: () => import('./ionic/segment/segment.component').then((c) => c.SegmentComponent)
+  },
 
 
 

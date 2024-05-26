@@ -49,6 +49,8 @@ ionic g c ionic/tabs --spec=false
 
 ionic g c ionic/grid --spec=false
 
+ionic g c ionic/segment --spec=false
+
 
 ionic g c ionic/interaction --spec=false
 ionic g s services/interaction
