@@ -1,0 +1,145 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Grid</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="main"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Grid</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">1</ion-col>
+      <ion-col size="3">2</ion-col>
+      <ion-col size="3">3</ion-col>
+    </ion-row>
+  </ion-grid>
+  
+  <ion-grid>
+    <ion-row>
+      <ion-col>1</ion-col>
+      <ion-col>2</ion-col>
+      <ion-col>3</ion-col>
+      <ion-col>4</ion-col>
+      <ion-col>5</ion-col>
+      <ion-col>6</ion-col>
+    </ion-row>
+  </ion-grid>
+  
+  <ion-grid [fixed]="true">
+    <ion-row>
+      <ion-col size="6">1</ion-col>
+      <ion-col>2</ion-col>
+      <ion-col>3</ion-col>
+      <ion-col>4</ion-col>
+      <ion-col>5</ion-col>
+      <ion-col>6</ion-col>
+      <ion-col>7</ion-col>
+      <ion-col>8</ion-col>
+      <ion-col>9</ion-col>
+      <ion-col>10</ion-col>
+      <ion-col>11</ion-col>
+      <ion-col>12</ion-col>
+      <ion-col>13</ion-col>
+      <ion-col>14</ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <b>Column 1 has <code>size</code> set to <code>"auto"</code></b>
+<ion-grid>
+  <ion-row>
+    <ion-col size="auto">hola mundo</ion-col>
+    <ion-col>2</ion-col>
+    <ion-col>3</ion-col>
+  </ion-row>
+</ion-grid>
+
+<b>Column 3 contains an input and has <code>size</code> set to <code>"auto"</code></b>
+<ion-grid>
+  <ion-row>
+    <ion-col>1</ion-col>
+    <ion-col>2</ion-col>
+    <ion-col size="auto">
+      <ion-input placeholder="3"></ion-input>
+    </ion-col>
+    <ion-col>4</ion-col>
+    <ion-col>5</ion-col>
+    <ion-col>6</ion-col>
+  </ion-row>
+</ion-grid>
+
+<b>Column 2 has <code>size</code> set to <code>"auto"</code> and a defined width</b>
+<ion-grid>
+  <ion-row>
+    <ion-col>1</ion-col>
+    <ion-col size="auto">
+      <div style="width: 150px">2</div>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+
+<b>Stacked for xs breakpoint, equal width for sm and up</b>
+<ion-grid>
+  <ion-row>
+    <ion-col size="12" size-sm="3">1</ion-col>
+    <ion-col size="12" size-sm="3">2</ion-col>
+    <ion-col size="12" size-sm="3">3</ion-col>
+    <ion-col size="12" size-sm="3">4</ion-col>
+  </ion-row>
+</ion-grid>
+
+<b>Equal width until md breakpoint, last column takes full width for md and up</b>
+<ion-grid>
+  <ion-row>
+    <ion-col  size-md="6">1</ion-col>
+    <ion-col size-md="6">2</ion-col>
+    <ion-col size-md="12">3</ion-col>
+  </ion-row>
+</ion-grid>
+
+<b>2 per row until md breakpoint, 3 per row for md, equal width for lg and up</b>
+<ion-grid>
+  <ion-row>
+    <ion-col size="6" size-md="4" size-lg="2">1</ion-col>
+    <ion-col size="6" size-md="4" size-lg="2">2</ion-col>
+    <ion-col size="6" size-md="4" size-lg="2">3</ion-col>
+    <ion-col size="6" size-md="4" size-lg="2">4</ion-col>
+    <ion-col size="6" size-md="4" size-lg="2">5</ion-col>
+    <ion-col size="6" size-md="4" size-lg="2">6</ion-col>
+  </ion-row>
+</ion-grid>
+
+
+
+<b>No offset for xs breakpoint, offset last 3 columns for md and up</b>
+<ion-grid>
+  <ion-row>
+    <ion-col>1</ion-col>
+    <ion-col offset-md="2">2</ion-col>
+    <ion-col offset-md="2">3</ion-col>
+    <ion-col offset-md="2">4</ion-col>
+  </ion-row>
+</ion-grid>
+
+<b>Column 1 has <code>push</code> set to <code>"4"</code> and column 2 has <code>pull</code> set to <code>"4"</code></b>
+<ion-grid>
+  <ion-row>
+    <ion-col push="4">1</ion-col>
+    <ion-col pull="2">2</ion-col>
+    <ion-col>3</ion-col>
+  </ion-row>
+</ion-grid>
+
+
+
+
+</ion-content>

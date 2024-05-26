@@ -140,6 +140,15 @@ export const routes: Routes = [
       },
     ]
   },
+  {
+    path: 'grid',
+    loadComponent: () => import('./ionic/grid/grid.component').then((c) => c.GridComponent)
+  },
+  {
+    path: 'interaction',
+    loadComponent: () => import('./ionic/interaction/interaction.component').then((c) => c.InteractionComponent)
+  },
+
 
 
   

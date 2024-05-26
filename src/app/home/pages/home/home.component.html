@@ -21,11 +21,18 @@
     <app-detail-carrito></app-detail-carrito>
 
     @if (!cargando) {
-        @for (article of articles; track $index) {
-            <app-article [article]="article"></app-article>
-        } @empty {
-            
-        }
+
+    <ion-grid fixed class="ion-no-padding">
+        <ion-row class="ion-justify-content-between">
+            @for (article of articles; track $index) {
+                <ion-col size="12" size-md="5" >
+                    <app-article [article]="article"></app-article>
+                </ion-col>
+                 } 
+        </ion-row>
+    </ion-grid>
+
+
     } @else {
         <p style="text-align: center;">cargando...</p>
     }
