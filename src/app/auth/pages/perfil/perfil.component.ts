@@ -10,6 +10,7 @@ import { FunctionsService } from 'src/app/firebase/functions.service';
 import { StorageService } from 'src/app/firebase/storage.service';
 import { IonModal } from '@ionic/angular/standalone';
 import { InteractionService } from '../../../services/interaction.service';
+import { flag } from 'ionicons/icons';
 
 @Component({
   selector: 'app-perfil',
@@ -105,14 +106,11 @@ export class PerfilComponent  implements OnInit {
       if (this.newName) {
         data.displayName = this.newName;
       }
-      if (this.newPhoto) {
-        data.photoURL = this.newPhoto;
-      }
       // data = { displayName: '', photoURL: ''}
       // https://www.shutterstock.com/image-vector/young-smiling-man-avatar-brown-600nw-2261401207.jpg'
       // https://cdn.pixabay.com/photo/2021/01/04/10/37/icon-5887113_1280.png
       // https://static.vecteezy.com/system/resources/previews/001/993/889/non_2x/beautiful-latin-woman-avatar-character-icon-free-vector.jpg
-      if (data.displayName || data.photoURL) {
+      if (data.displayName) {
         this.modalEditInfo.isOpen = false;
         await this.interactionService.showLoading('Actualizando...')
         await this.authenticationService.updateProfile(data);
@@ -172,14 +170,17 @@ export class PerfilComponent  implements OnInit {
       const data = this.formNewEmail.value;
       console.log('valid -> ', data);
       try {
-        await this.interactionService.showLoading('Enviando enlace de varificación...')
+        await this.interactionService.showLoading('Enviando enlace de verificación...')
         await this.authenticationService.verifyBeforeUpdateEmail(data.email);
         this.interactionService.dismissLoading();
         await this.interactionService.presentAlert('Importante', 
               `Te hemos enviado un correo a <strong>${data.email}</strong> para que puedas verificar tu nuevo correo, 
               verifícalo e inicia sesión con el nuevo correo, caso contrario inicia sesión con tu correo de siempre`);
-        this.router.navigate(['/user/login']);
-        this.authenticationService.logout();
+        await this.authenticationService.logout(false);
+        this.modalEditInfo.isOpen = false;
+        setTimeout(() => {
+                this.router.navigate(['/user/login']);
+        }, 200);
         console.log(`te hemos enviado un correo para que puedas verificar tu nuevo correo, 
         verifícalo e inicia sesión con el nuevo correo, 
         caso contrario inicia sesión con tu correo de siempre`);
@@ -187,9 +188,11 @@ export class PerfilComponent  implements OnInit {
         console.log('error al actualizar el correo -> ', error);
         console.log('¿Deseas cerrar sesión y volver a ingresar para realizar esta acción?');
         this.interactionService.dismissLoading();
+        this.modalEditInfo.isOpen = false;
         const response = await this.interactionService.presentAlert('Error', 
         `Para realizar esta acción debes haber realizado un inicio de sesión reciente.
-        ¿Deseas cerrar sesión y volver a ingresar para realizar esta acción?`);
+        ¿Deseas cerrar sesión y volver a ingresar para realizar esta acción?`,
+      'Cancelar');
         if (response) {
           await this.authenticationService.logout(false);
           setTimeout(() => {
@@ -227,8 +230,10 @@ export class PerfilComponent  implements OnInit {
           `Para establacer una nueva contraseña debes cerrar tu sesión e ingresar nuevamente, <strong>¿Deseas cerrar tu sesión?</strong>`,
         'Cancelar');
         if (responseAlert) {
-          await this.authenticationService.logout();
-          this.router.navigate(['/user/login'])
+          await this.authenticationService.logout(false);
+          setTimeout(() => {
+            this.router.navigate(['/user/login'])
+          }, 200);
         }
 
       }
@@ -265,8 +270,11 @@ export class PerfilComponent  implements OnInit {
           `Para eliminar tu cuenta debes cerrar tu sesión e ingresar nuevamente, <strong>¿Deseas cerrar tu sesión?</strong>`,
         'Cancelar');
         if (responseAlert) {
-          await this.authenticationService.logout();
-          this.router.navigate(['/user/login'])
+          await this.authenticationService.logout(false);
+          setTimeout(() => {
+            this.router.navigate(['/user/login'])
+    
+          }, 200);
         }
       }
     }
