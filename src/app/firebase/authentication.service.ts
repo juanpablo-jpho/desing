@@ -83,10 +83,12 @@ export class AuthenticationService {
     return signInWithEmailAndPassword(this.auth, email, password);
   }
 
-  async logout() {
+  async logout(reload = true) {
     // return signOut(this.auth);
     await signOut(this.auth);
-    window.location.reload();
+    if (reload) {
+      window.location.reload();
+    }
   }
 
   deleteUser() {
@@ -168,4 +170,44 @@ export class AuthenticationService {
     return getRedirectResult(this.auth) 
   }
 
+
+
 }
+
+
+const habilidades = [
+  {
+    nombre: "consulta_deuda",
+    descripcion: `Utiliza esta habilidad cuando el usuario desea consultar su deuda,
+    se puede consultar la deuda por cédula, ruc, cuenta contrato o número de medidor, solicita
+    el usuario que te proporcione estos valores para poder realizar la consulta`,
+    parametros: [
+      {nombre: 'cedula_ruc', descripcion: 'Número de cédula del cliente, puede ser de 10 a 13 dígitos'},
+      {nombre: 'cuenta_contrato', descripcion: 'Número de cuenta contrato del cliente, es de 12 dígitos'},
+      {nombre: 'Número de medidor', descripcion: 'Número de medidor de cliente'}
+    ]
+  }
+];
+
+const messages = [
+  { type: 'user', message: '¿Cual es mi deuda?'},
+  { type: 'agent', message: 'Para poder consultar tu deuda, por favor proporcióname tu número de cédula'},
+  { type: 'user', message: '0102030910'}
+];
+
+const request = { 
+  promt: `Eres un asistente de la Centrosur, te llamas José luz, respondes siempre al cliente de forma amigable, 
+  no respondas preguntas que no tengan que ver con los servicios que brinda la empresa.`,
+  messages: [
+    { type: 'user', message: '¿Cual es mi deuda?'},
+    { type: 'agent', message: 'Para poder consultar tu deuda, por favor proporcióname tu número de cédula'},
+    { type: 'user', message: '0102030910'},
+    { type: 'system', message: 'Deuda 10'}
+  ]
+}
+
+
+
+
+
+
