@@ -5,7 +5,12 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FiletourlPipe implements PipeTransform {
 
-  transform(file: File): string {
+  transform(file: File | any): string {
+    if (typeof file == 'string') {
+      if (file.search('http') == 0) {
+        return file;
+      }
+    }
     return URL.createObjectURL(file);
   }
 

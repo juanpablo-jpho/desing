@@ -1,22 +1,101 @@
-<ion-content>
 
-  <div style="text-align: center;">
+<ion-header translucent="true">
+  <ion-toolbar>
+    <ion-title>Completar registro</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen="true" color="light">
+
+  <ion-header collapse="condense" >
+    <ion-toolbar>
+      <ion-title size="large">Completar registro</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <!-- <div style="text-align: center;">
     <p>COMPLETAR REGISTRO</p>
-  </div>
+  </div> -->
 
-  @if (!iniciando) {
+
+    <ion-grid fixed>
+      <ion-row class="ion-justify-content-center">
+        <ion-col size="11" size-md="8" size-xl="6">
+          <form [formGroup]="datosFormCompleteRegistro" (ngSubmit)="completarRegistro()">
+          
+            <br>
+            <ion-input type="text" label="Email"
+            formControlName="email" readonly fill="outline" mode="md"
+            labelPlacement="floating"></ion-input>
+
+            <br>
+            <ion-input type="text" placeholder="Juan" label="Tu nombre de usuario"
+            labelPlacement="floating" mode="md" fill="outline"
+            formControlName="name"
+            errorText="Este campo es requerido"></ion-input>
+            <br>
+            <ion-input type="number" placeholder="20" label="Edad"
+            labelPlacement="floating" mode="md" fill="outline"
+            formControlName="age"
+            errorText="Este campo es requerido"></ion-input>
+            <br>
+
+            <input #inputFile (change)="viewPreview(inputFile)" type="file" 
+            style='display: none;' accept="image/*">
+
+            <ion-list inset mode="ios">
+              <ion-item lines="none">
+                <ion-label>Selecciona una foto de perfil</ion-label>
+                <ion-buttons slot="end">
+                  <ion-button (click)="inputFile.click()">
+                    <ion-icon slot="icon-only" name="image"></ion-icon>
+                  </ion-button>
+                </ion-buttons>
+              </ion-item>
+            
+            </ion-list>
+
+            <div  style="text-align: end;">
+              <span
+              *ngIf="datosFormCompleteRegistro.controls['photo'].hasError('required')">
+                    <i>Este campo es <strong>requerido</strong></i>  
+               </span>
+            </div>
+             <br>
+
+            @if (datosFormCompleteRegistro?.controls?.photo?.value) {
+              <div class="ion-text-center">
+                <img [src]="datosFormCompleteRegistro.controls.photo.value| filetourl">
+              </div>
+            }
+
+
+      
+            <br>
+            <div class="ion-text-center">
+              <ion-button type="submit" shape="round">
+                Completar registro
+              </ion-button>
+            </div>
+          
+          
+          </form>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
 
 
       <div class="content-form">
         <form [formGroup]="datosFormCompleteRegistro" (ngSubmit)="completarRegistro()">
         
-          <!-- email -->
+
           <div class="input-content">
             <label>Email</label>
             <input placeholder="Email" formControlName="email" readonly>
           </div>
     
-          <!-- nombre -->
+
           <div class="input-content">
             <label>Nombre</label>
             <input formControlName="name" type="string">
@@ -26,7 +105,7 @@
             </span>
           </div>
     
-          <!-- edad -->
+
           <div class="input-content">
             <label>Edad</label>
             <input formControlName="age" type="number">
@@ -36,7 +115,7 @@
             </span>
           </div>
     
-          <!-- foto -->
+
           <div class="input-content">
             <label>Foto</label>
             <input formControlName="photo" type="string">
@@ -46,7 +125,7 @@
             </span>
           </div>
     
-          <!-- enviar -->
+
           <div style="text-align: center">
             <button type="submit"[disabled]="cargando">
                 <strong>Completar registro</strong>
@@ -58,11 +137,6 @@
       </div>
 
 
-  } @else {
-    <div style="text-align: center">
-      <p>cargando...</p>
-    </div>
-  }
 
 
 </ion-content>
