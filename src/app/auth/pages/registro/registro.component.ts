@@ -1,3 +1,4 @@
+import { InteractionService } from './../../../services/interaction.service';
 import { ChangeDetectorRef, Component, OnInit, inject, signal } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthenticationService } from 'src/app/firebase/authentication.service';
@@ -44,7 +45,8 @@ export class RegistroComponent  implements OnInit {
 
   constructor(private fb: FormBuilder,
               private router: Router,
-              private changeDetectorRef: ChangeDetectorRef) {
+              private changeDetectorRef: ChangeDetectorRef,
+              private interactionService: InteractionService) {
               }
 
   async ngOnInit() {
@@ -98,11 +100,11 @@ export class RegistroComponent  implements OnInit {
   async registrarse() {
     this.cargando = true;
     console.log('datosForm -> ', this.datosForm);
-    // if (this.datosForm.valid) {
+    if (this.datosForm.valid) {
       const data = this.datosForm.value;
       console.log('valid -> ', data);
       try {
-
+        await this.interactionService.showLoading('Registrando...');
         const foto: File = data.photo;
         this.userService.validateHasProfile = false;
         const res =  await this.authenticationService.createUser(data.email, data.password)
@@ -130,12 +132,15 @@ export class RegistroComponent  implements OnInit {
         }
         console.log('datosUser -> ', datosUser);
         await this.firestoreService.createDocument(Models.Auth.PathUsers, datosUser, res.user.uid);
+        this.interactionService.dismissLoading();
+        this.interactionService.showToast('Usuario creado con éxito')
         console.log('usuario creado con éxito');
         this.router.navigate(['/user/perfil'])
       } catch (error) {
         console.log('registrarse error -> ', error);
+        this.interactionService.presentAlert('Error', 'Ocurrió un error, intenta nuevamente')
       }
-    // }
+    }
     this.cargando = false;
   }
 
