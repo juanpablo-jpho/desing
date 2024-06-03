@@ -1,15 +1,37 @@
-<ion-content>
+<ion-header translucent="true">
+  <ion-toolbar>
+    <ion-title>Usuarios</ion-title>
+    <ion-buttons slot="start">
+        <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 
-  <div style="text-align: center;">
+<ion-content fullscreen="true" color="light">
+
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Usuarios</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+
+  <!-- <div style="text-align: center;">
     <p>ADMINISTRADOR DE USUARIOS</p>
-  </div>
+  </div> -->
+
+  <ion-searchbar placeholder="Correo"  type="email" 
+    (ionChange)="onSearchChange($event)" [debounce]="250" showCancelButton="always"
+    cancelButtonText="cancelar"
+    animated="true"
+    (ionCancel)="cancelSearch()">
+</ion-searchbar>
 
   @if (enableBuscarPorEmail) {
 
-      <div class="content-form">
+      <!-- <div class="content-form">
         <form [formGroup]="formEmail" (ngSubmit)="buscarPorEmail()">
         
-          <!-- email -->
           <div class="input-content">
             <label>Email</label>
             <input placeholder="Email" formControlName="email">
@@ -24,7 +46,6 @@
     
           </div>
   
-          <!-- enviar -->
           <div style="text-align: center">
             <button (click)="enableBuscarPorEmail = false">
               <strong>cancelar</strong>
@@ -35,20 +56,37 @@
           </div>
         
         </form>
-      </div>
+      </div> -->
    
   } @else {
 
-    <div style="text-align: center">
-      <button class="button-gris"(click)="enableBuscarPorEmail = true; users = null">Buscar por email</button>
-    </div>
 
-    <div style="text-align: center;">
+
+    <!-- <div style="text-align: center">
+      <button class="button-gris"(click)="enableBuscarPorEmail = true; users = null">Buscar por email</button>
+    </div> -->
+
+    <ion-grid fixed>
+      <ion-row class="ion-justify-content-center">
+        <ion-col size="11" size-md="8" size-xl="6">
+          <ion-segment [(ngModel)]="rolSegment" (ionChange)="getMoreUsers(rolSegment)">
+            @for (rol of roles; track $index) {
+              <ion-segment-button [value]="rol">
+                <ion-label>{{rol}}</ion-label>
+              </ion-segment-button>
+            }
+          </ion-segment>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
+    <!-- <div style="text-align: center;">
       @for (rol of roles; track $index) {
         <button class="rol" [ngClass]="{'rol-selected': rol == rolSelected}"
         (click)="getMoreUsers(rol)">{{rol}}</button>
       }
-    </div>
+    </div> -->
   }
      
   @if(!cargando) {
@@ -56,7 +94,9 @@
 
       @for (user of users; track $index) {
 
-        <app-user-detail [user]="user"></app-user-detail>
+        <ion-list inset>
+          <app-user-detail [user]="user"></app-user-detail>
+        </ion-list>
 
       } @empty {
         <div style="text-align: center;">
@@ -64,21 +104,27 @@
         </div>
       }
 
-      @if (enableMore) {
+      <ion-infinite-scroll threshold="25%" [disabled]="!enableMore" position="bottom" (ionInfinite)="loadData($event)">
+        <ion-infinite-scroll-content loadingSpinner="bubbles">
+        </ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+
+      <!-- @if (enableMore) {
         <div style="text-align:center" >
           <button (click)="getMoreUsers()" class="more">más</button>
         </div>
-      }
+      } -->
 
   } 
   @else {
-    <p style="text-align: center">cargando...</p>
+    <br>
+    <div class="ion-text-center">
+      <ion-spinner name="bubbles"></ion-spinner>
+    </div>
+    <!-- <p style="text-align: center">cargando...</p> -->
   }
 
-  
 
-
-
-    <div  style="margin: 60px"></div>
+    <!-- <div  style="margin: 60px"></div> -->
 
 </ion-content>

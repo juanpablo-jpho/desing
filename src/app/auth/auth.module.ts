@@ -8,7 +8,14 @@ import { IonBackButton, IonButton, IonButtons, IonCard, IonCol, IonContent,
   IonRow, IonText, IonTitle, IonToolbar, IonAvatar, 
   IonFooter,
   IonRouterLink,
-  IonSpinner} from '@ionic/angular/standalone';
+  IonSpinner,
+  IonSegment,
+  IonSegmentButton,
+  IonSelect,
+  IonSelectOption,
+  IonInfiniteScroll,
+  IonInfiniteScrollContent,
+  IonSearchbar} from '@ionic/angular/standalone';
 import { LoginComponent } from './pages/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegistroComponent } from './pages/registro/registro.component';
@@ -44,6 +51,10 @@ import { SharedModule } from '../shared/shared.module';
     IonCard, IonText,
     IonChip, IonIcon, IonSpinner,
     IonListHeader, IonList, IonFooter,
+    IonSegment, IonSegmentButton,
+    IonSelect, IonSelectOption,
+    IonInfiniteScroll, IonInfiniteScrollContent,
+    IonSearchbar,
     IonRouterLink
   ]
 })

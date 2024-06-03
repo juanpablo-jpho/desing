@@ -3,6 +3,7 @@ import { Models } from 'src/app/models/models';
 import { FirestoreService } from '../../../firebase/firestore.service';
 import { WebService } from 'src/app/services/web.service';
 import { FunctionsService } from 'src/app/firebase/functions.service';
+import { InteractionService } from '../../../services/interaction.service';
 
 @Component({
   selector: 'app-user-detail',
@@ -21,7 +22,9 @@ export class UserDetailComponent  implements OnInit {
   rolesUser: {rol: Models.Auth.Rol, enable: boolean}[] = [];
   roles: Models.Auth.Rol[] = ['admin', 'cliente', 'motorizado'];
 
-  constructor() { }
+  rolesSelect: Models.Auth.Rol[] = [];
+
+  constructor(private interactionService: InteractionService) { }
 
   ngOnInit() {
       this.initRoles()
@@ -31,6 +34,12 @@ export class UserDetailComponent  implements OnInit {
     this.roles.forEach( rol => {
       this.rolesUser.push({rol, enable: this.user.roles[rol]})
     });
+
+    for (const key in this.user.roles) {
+       const rol: any = key
+       this.rolesSelect.push(rol)
+    }
+    
   }
 
   selectRol(rol: Models.Auth.Rol) {
@@ -100,6 +109,28 @@ export class UserDetailComponent  implements OnInit {
     const res = await this.webService.request<any>('POST', url, 'helloWorld')
     console.log('helloWorld -> ', res);
 
+  }
+
+  async changeRol(ev: any) {
+    console.log('changeRol -> ', ev.detail.value);
+    await this.interactionService.showLoading('Actualizando...')
+    const roles: any = {};
+    this.rolesSelect.forEach( rol => {
+          roles[rol] = true 
+    });
+    const updateDoc = { 
+      roles
+    }
+    console.log('updateDoc roles -> ', updateDoc);
+    const request: Models.Functions.RequestSetRol = {
+      roles,
+      uid: this.user.id
+    }
+    const response = await this.functionsService.call<any, any>('appCall', request)
+    this.interactionService.dismissLoading();
+    this.interactionService.showToast('Rol actualizado con éxito');
+    console.log('response -> ', response);
+    
   }
 
 }

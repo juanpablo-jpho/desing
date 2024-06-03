@@ -1,5 +1,5 @@
 @if (user) {
-  <div class="content-user">
+  <!-- <div class="content-user">
 
     <div>
       @if (user.photo) {
@@ -13,9 +13,9 @@
       <p> <strong>Email:</strong>  {{user.email}}</p>
       <p> <strong>Edad:</strong>  {{user.age}}</p>
     </div>
-  </div>
+  </div> -->
 
-  @if (!enableAgregarRol) {
+  <!-- @if (!enableAgregarRol) {
     <div style="text-align:right">
       <button (click)="enableAgregarRol = true">Editar rol</button>
     </div>
@@ -29,7 +29,7 @@
         }
     </div>
 
-    <!-- actualizar rol -->
+
     <div style="text-align: center">
       <button (click)="enableAgregarRol = false">
         <strong>cancelar</strong>
@@ -46,7 +46,32 @@
       
     </div>
 
-  }
+  } -->
+
+
+
+  <ion-item>
+    <ion-avatar slot="start">
+      @if (user.photo) {
+        <img [src]="user.photo | reftourl | async">
+      } @else {
+          <img src="https://i.pinimg.com/736x/0d/64/98/0d64989794b1a4c9d89bff571d3d5842.jpg">
+      }
+    </ion-avatar>
+    <ion-label>
+      <strong>Nombre:</strong>  {{user.name}}
+      <p> <strong>Email:</strong>  {{user.email}}</p>
+      <p> <strong>Edad:</strong>  {{user.age}}</p>
+    </ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-select label="Rol" label-placement="floating" multiple
+    (ionChange)="changeRol($event)" [(ngModel)]="rolesSelect">
+      @for (rol of roles; track $index) {
+        <ion-select-option [value]="rol">{{rol}}</ion-select-option>
+      }
+    </ion-select>
+  </ion-item>
 
 
 

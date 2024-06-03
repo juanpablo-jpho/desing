@@ -23,6 +23,9 @@ export class UsersComponent  implements OnInit {
     email: ['', [Validators.required, Validators.email]], 
   });
 
+  rolSegment: Models.Auth.Rol = 'admin';  
+  numItems: number = 4;
+
   constructor(private fb: FormBuilder) {
         this.getMoreUsers();
   }
@@ -40,7 +43,7 @@ export class UsersComponent  implements OnInit {
       this.rolSelected = rol;
       console.log('getMoreUsers');
       const path = Models.Auth.PathUsers;
-      const numItems = 1;
+      const numItems = this.numItems;
       let q: Models.Firebase.whereQuery[];
       q = [ [`roles.${rol}`, '==', true] ];
       const extras: Models.Firebase.extrasQuery = {
@@ -97,6 +100,40 @@ export class UsersComponent  implements OnInit {
 
 
       }
+  }
+
+  async loadData(ev: any) {
+    console.log('loadData');
+    await this.getMoreUsers();
+    ev.target.complete();
+  }
+
+  async onSearchChange(ev: any) {
+    this.enableBuscarPorEmail = true;
+    console.log('onSearchChange -> ', ev);
+    const email = ev.detail.value;
+    this.users = null;
+    this.cargando = true;
+    this.enableMore = false;
+    const path = Models.Auth.PathUsers;
+    let q: Models.Firebase.whereQuery[];
+    q = [ [`email`, '==', email] ];
+    const response = await this.firestoreService.getDocumentsQuery<Models.Auth.UserProfile>(path, q);
+    this.cargando = false;
+    if (!response.empty) {
+      response.forEach((item) => {
+          this.users = [];
+          this.users.push(item.data());
+      });
+    }
+    
+  }
+
+  cancelSearch() {
+    setTimeout(() => {
+      this.enableBuscarPorEmail = false;
+      this.getMoreUsers();
+    }, 200);
   }
 
 }
