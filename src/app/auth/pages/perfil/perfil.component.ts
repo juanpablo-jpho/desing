@@ -79,6 +79,8 @@ export class PerfilComponent  implements OnInit {
     this.getIsAdmin();
     // this.appCall();
 
+    
+
   }
 
   ngOnInit() {}

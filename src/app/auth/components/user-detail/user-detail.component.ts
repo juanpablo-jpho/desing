@@ -39,6 +39,8 @@ export class UserDetailComponent  implements OnInit {
        const rol: any = key
        this.rolesSelect.push(rol)
     }
+    console.log('this.rolesSelect -> ', this.rolesSelect);
+    
     
   }
 

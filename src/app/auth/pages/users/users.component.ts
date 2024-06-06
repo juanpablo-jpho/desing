@@ -33,7 +33,8 @@ export class UsersComponent  implements OnInit {
   ngOnInit() {}
 
   async getMoreUsers(rol: Models.Auth.Rol = this.rolSelected) {
-    
+      console.log(' getMoreUsers -> ', this.rolSegment);
+      
       if (this.rolSelected != rol) {
         this.users = null;
         this.cargando = true;

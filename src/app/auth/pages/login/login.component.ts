@@ -4,7 +4,7 @@ import { Models } from 'src/app/models/models';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { InteractionService } from '../../../services/interaction.service';
-import { IonModal } from '@ionic/angular/standalone';
+import { IonModal, NavController } from '@ionic/angular/standalone';
 import { Capacitor } from '@capacitor/core';
 
 @Component({
@@ -70,7 +70,8 @@ export class LoginComponent  implements OnInit {
 
   constructor(private fb: FormBuilder,
               private router: Router,
-              private interactionService: InteractionService) { 
+              private interactionService: InteractionService,
+              private navController: NavController) { 
     this.initForm();
   }
 
@@ -92,7 +93,7 @@ export class LoginComponent  implements OnInit {
         const user = response.user;
         this.interactionService.showToast(`Bienvenido ${user.displayName}`);
         setTimeout(() => {
-          this.router.navigate(['user', 'perfil'])
+          this.router.navigate(['user', 'perfil'], {replaceUrl: true})
         }, 200);
       }
 
@@ -116,7 +117,10 @@ export class LoginComponent  implements OnInit {
       try {
         await this.authenticationService.login(this.form.email, this.form.password);
         setTimeout(() => {
-          this.router.navigate(['user', 'perfil'])
+          console.log('navigateRoot');
+          
+          this.navController.navigateRoot(['user', 'perfil'])
+          // this.router.navigate(['user', 'perfil'], {direction: 'back'})
         }, 500);
       } catch (error) {
           console.log('login error -> ', error);
@@ -156,7 +160,8 @@ export class LoginComponent  implements OnInit {
         const user = response.user;
         this.interactionService.showToast(`Bienvenido ${user.displayName}`)
         setTimeout(() => {
-          this.router.navigate(['user', 'perfil'])
+          // this.router.navigate(['user', 'perfil'])
+          this.router.navigate(['user', 'perfil'], {replaceUrl: true})
         }, 500);
       } catch (error) {
           console.log('login error -> ', error);

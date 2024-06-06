@@ -20,8 +20,8 @@
     <p>ADMINISTRADOR DE USUARIOS</p>
   </div> -->
 
-  <ion-searchbar placeholder="Correo"  type="email" 
-    (ionChange)="onSearchChange($event)" [debounce]="250" showCancelButton="always"
+  <ion-searchbar placeholder="Correo"  type="email" mode="ios"
+    (ionChange)="onSearchChange($event)" showCancelButton="always"
     cancelButtonText="cancelar"
     animated="true"
     (ionCancel)="cancelSearch()">
@@ -104,7 +104,8 @@
         </div>
       }
 
-      <ion-infinite-scroll threshold="25%" [disabled]="!enableMore" position="bottom" (ionInfinite)="loadData($event)">
+      <ion-infinite-scroll threshold="25%" [disabled]="!enableMore" 
+      position="bottom" (ionInfinite)="loadData($event)">
         <ion-infinite-scroll-content loadingSpinner="bubbles">
         </ion-infinite-scroll-content>
       </ion-infinite-scroll>

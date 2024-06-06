@@ -41,6 +41,11 @@ ion-button {
   letter-spacing: unset !important
 }
 
+ion-segment-button {
+  text-transform: unset !important;
+  letter-spacing: unset !important
+}
+
 ion-split-pane {
   --side-max-width: 100 !important;
   --side-width: 100 !important;
