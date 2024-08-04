@@ -16,10 +16,6 @@
   </ion-header>
 
 
-  <!-- <div style="text-align: center;">
-    <p>REGISTRARSE</p>
-  </div> -->
-
   <ion-grid fixed>
     <ion-row class="ion-justify-content-center">
       <ion-col size="11" size-md="8" size-xl="6">
@@ -91,90 +87,6 @@
     </ion-row>
   </ion-grid>
 
-
-
-
-
-      <!-- <div class="content-form">
-        <form [formGroup]="datosForm" (ngSubmit)="registrarse()">
-        
-
-          <div class="input-content">
-            <label>Email</label>
-            <input placeholder="Email" formControlName="email">
-            <span 
-                *ngIf="datosForm.controls['email'].hasError('required')">
-              <i>Este campo es <strong>requerido</strong></i>  
-            </span>
-            <span style="text-align: end;"
-            *ngIf="datosForm.controls['email'].hasError('email')">
-            <i>Ingresa un email <strong>válido</strong></i>  
-            </span>
-    
-          </div>
-    
-
-          <div class="input-content">
-            <label>Contraseña</label>
-            <input formControlName="password" type="password" minlength="6">
-            <span style="text-align: end;"
-                *ngIf="datosForm.controls['password'].hasError('required')">
-              <i>Este campo es <strong>requerido</strong></i>  
-            </span>
-          </div>
-    
-
-          <div class="input-content">
-            <label>Nombre</label>
-            <input formControlName="name" type="string">
-            <span style="text-align: end;"
-                *ngIf="datosForm.controls['name'].hasError('required')">
-              <i>Este campo es <strong>requerido</strong></i>  
-            </span>
-          </div>
-    
-
-          <div class="input-content">
-            <label>Edad</label>
-            <input formControlName="age" type="number">
-            <span style="text-align: end;"
-                *ngIf="datosForm.controls['age'].hasError('required')">
-              <i>Este campo es <strong>requerido</strong></i>  
-            </span>
-          </div>
-    
-
-          <div class="input-content">
-
-            <label>Foto</label>
-
-            <input #inputFile (change)="viewPreview(inputFile)" type="file" 
-                  style='display: none;' accept="image/*">
-             <div>
-              <button type="button" (click)="inputFile.click()">cargar imagen</button>
-             </div>
-             @if (datosForm?.controls?.photo?.value) {
-               <div>
-                <img [src]="datosForm.controls.photo.value | filetourl" alt="">
-               </div>
-             }
-            <span style="text-align: end;"
-                *ngIf="datosForm.controls['photo'].hasError('required')">
-              <i>Este campo es <strong>requerido</strong></i>  
-            </span>
-          </div>
-
-
-          <div style="text-align: center">
-            <button type="submit"[disabled]="cargando">
-                <strong>Registrarse</strong>
-            </button>
-          </div>
-        
-        
-        </form>
-      </div> -->
-    
       <div class="ion-text-center">
         <p> ¿Ya tienes un usuario?</p>
         <ion-button [routerLink]="['/user/login']"  color="medium" shape="round">
@@ -182,10 +94,4 @@
         </ion-button>
       </div>
 
-
-
-    
-
-
-      
 </ion-content>

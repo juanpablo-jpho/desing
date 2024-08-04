@@ -4,7 +4,7 @@ import { Models } from 'src/app/models/models';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { InteractionService } from '../../../services/interaction.service';
-import { IonModal, NavController } from '@ionic/angular/standalone';
+import { IonModal } from '@ionic/angular/standalone';
 import { Capacitor } from '@capacitor/core';
 
 @Component({
@@ -15,7 +15,6 @@ import { Capacitor } from '@capacitor/core';
 })
 export class LoginComponent  implements OnInit {
 
-  form: Models.Auth.DatosLogin;
   authenticationService: AuthenticationService = inject(AuthenticationService);
   cargando: boolean = false;
 
@@ -25,7 +24,6 @@ export class LoginComponent  implements OnInit {
     email: ['', [Validators.required, Validators.email]], 
   });
 
-  enableResetPassword: boolean = false;
 
   loginForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]], 
@@ -70,9 +68,7 @@ export class LoginComponent  implements OnInit {
 
   constructor(private fb: FormBuilder,
               private router: Router,
-              private interactionService: InteractionService,
-              private navController: NavController) { 
-    this.initForm();
+              private interactionService: InteractionService) { 
   }
 
   ngOnInit() {
@@ -83,10 +79,10 @@ export class LoginComponent  implements OnInit {
       this.enableLoginWithEmailAndPassword = true;
       return;
     }
-    // if (Capacitor.isNativePlatform()) {
+    if (Capacitor.isNativePlatform()) {
       await this.interactionService.showLoading('Procesando...')
       const token = await this.authenticationService.getTokenOfProvider(provider.id);
-      console.log(`token: ${token} para hacer el login con -> ${provider.id}`);
+      // console.log(`token: ${token} para hacer el login con -> ${provider.id}`);
       const response = await this.authenticationService.loginWithTokenOfProvider(provider.id, token);
       this.interactionService.dismissLoading();
       if (response) {
@@ -96,37 +92,11 @@ export class LoginComponent  implements OnInit {
           this.router.navigate(['user', 'perfil'], {replaceUrl: true})
         }, 200);
       }
-
-
-    // } else {
-    //   await this.interactionService.showLoading('Procesando...')
-    //   this.authenticationService.loginWithProvider(provider.id)
-    // }
-
-  }
-
-  initForm() {
-    this.form = {
-      email: '',
-      password: ''
+    } else {
+      await this.interactionService.showLoading('Procesando...')
+      this.authenticationService.loginWithProvider(provider.id)
     }
-  }
 
-  async login() {
-    if (this.form?.email && this.form?.password) {
-      try {
-        await this.authenticationService.login(this.form.email, this.form.password);
-        setTimeout(() => {
-          console.log('navigateRoot');
-          
-          this.navController.navigateRoot(['user', 'perfil'])
-          // this.router.navigate(['user', 'perfil'], {direction: 'back'})
-        }, 500);
-      } catch (error) {
-          console.log('login error -> ', error);
-                
-      }
-    }
   }
 
   async resetPassword() {
@@ -137,7 +107,6 @@ export class LoginComponent  implements OnInit {
       console.log('resetPassword valid -> ', data);
       try {
         await this.authenticationService.sendPasswordResetEmail(data.email)
-        this.enableResetPassword = false;
         this.interactionService.dismissLoading();
         this.interactionService.presentAlert('Importente', 
             'Te hemos enviado un correo para reestablecer tu contraseña')
@@ -160,7 +129,6 @@ export class LoginComponent  implements OnInit {
         const user = response.user;
         this.interactionService.showToast(`Bienvenido ${user.displayName}`)
         setTimeout(() => {
-          // this.router.navigate(['user', 'perfil'])
           this.router.navigate(['user', 'perfil'], {replaceUrl: true})
         }, 500);
       } catch (error) {

@@ -6,11 +6,10 @@ import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from '@angular/fire/auth';
 import { UserService } from 'src/app/services/user.service';
-import { FunctionsService } from 'src/app/firebase/functions.service';
 import { StorageService } from 'src/app/firebase/storage.service';
 import { IonModal } from '@ionic/angular/standalone';
 import { InteractionService } from '../../../services/interaction.service';
-import { flag } from 'ionicons/icons';
+
 
 @Component({
   selector: 'app-perfil',
@@ -22,28 +21,18 @@ export class PerfilComponent  implements OnInit {
   authenticationService: AuthenticationService = inject(AuthenticationService);
   firestoreService:   FirestoreService = inject(  FirestoreService);
   userService: UserService = inject(UserService);
-  private functionsService: FunctionsService = inject(FunctionsService);
   storageService: StorageService = inject(StorageService);
 
   user: User;
 
   userProfile: Models.Auth.UserProfile;
-
   newName: string = '';
   newPhoto: string = '';
-  newAge: number = null;
-  cargando: boolean = false;
   iniciando: boolean = true;
 
   formNewEmail = this.fb.group({
     email: ['', [Validators.required, Validators.email]], 
   });
-
-  enableActualizarEmail: boolean = false;
-  enableActualizarPerfil: boolean = false;
-
-  enableCambiarPassword: boolean = false;
-  visible: boolean = false;
 
   isSame = (input: FormControl) => {
     console.log('input -> ', input.value);
@@ -58,9 +47,7 @@ export class PerfilComponent  implements OnInit {
     repetPassword: ['', [Validators.required, this.isSame]], 
   });
 
-  enableDeletePassword: boolean = false;
 
-  isAdmin: boolean = false;
   newImage: File;
 
 
@@ -76,20 +63,12 @@ export class PerfilComponent  implements OnInit {
     this.iniciando = true;
     this.user = this.authenticationService.getCurrentUser()
     this.getDatosProfile(this.user.uid);
-    this.getIsAdmin();
-    // this.appCall();
 
-    
-
+  
   }
 
   ngOnInit() {}
 
-  async appCall() {
-    const response = await this.functionsService.call<any, any>('appCall')
-    console.log('response -> ', response);
-    
-  } 
 
   ionViewDidEnter() {
     const user = this.authenticationService.getCurrentUser();
@@ -108,10 +87,6 @@ export class PerfilComponent  implements OnInit {
       if (this.newName) {
         data.displayName = this.newName;
       }
-      // data = { displayName: '', photoURL: ''}
-      // https://www.shutterstock.com/image-vector/young-smiling-man-avatar-brown-600nw-2261401207.jpg'
-      // https://cdn.pixabay.com/photo/2021/01/04/10/37/icon-5887113_1280.png
-      // https://static.vecteezy.com/system/resources/previews/001/993/889/non_2x/beautiful-latin-woman-avatar-character-icon-free-vector.jpg
       if (data.displayName) {
         this.modalEditInfo.isOpen = false;
         await this.interactionService.showLoading('Actualizando...')
@@ -125,31 +100,19 @@ export class PerfilComponent  implements OnInit {
         this.interactionService.dismissLoading();
         this.interactionService.showToast('Actualizado con éxito')
         this.user = user;
-        ////
         this.newName = null;
         this.newPhoto = null;
       }
 
   }
 
-  async getIsAdmin() {
-      this.isAdmin = false;
-      const roles = await this.userService.getRol();
-      if (roles?.admin) {
-        this.isAdmin = true;
-      }
-  }
 
   async getDatosProfile(uid: string) {
     console.log('getDatosProfile -> ', uid);
     this.firestoreService.getDocumentChanges<Models.Auth.UserProfile>(`${Models.Auth.PathUsers}/${uid}`).subscribe( res => {
-        // this.isAdmin = false
         if (res) {  
           this.userProfile = res;
           console.log('this.userProfile -> ', this.userProfile);
-          // if (this.userProfile.roles?.admin == true) {
-          //   this.isAdmin = true;
-          // }
         }
         this.iniciando = false;
     });
@@ -183,12 +146,8 @@ export class PerfilComponent  implements OnInit {
         setTimeout(() => {
                 this.router.navigate(['/user/login']);
         }, 200);
-        console.log(`te hemos enviado un correo para que puedas verificar tu nuevo correo, 
-        verifícalo e inicia sesión con el nuevo correo, 
-        caso contrario inicia sesión con tu correo de siempre`);
       } catch (error) {
         console.log('error al actualizar el correo -> ', error);
-        console.log('¿Deseas cerrar sesión y volver a ingresar para realizar esta acción?');
         this.interactionService.dismissLoading();
         this.modalEditInfo.isOpen = false;
         const response = await this.interactionService.presentAlert('Error', 
@@ -198,7 +157,7 @@ export class PerfilComponent  implements OnInit {
         if (response) {
           await this.authenticationService.logout(false);
           setTimeout(() => {
-            this.router.navigate(['/user/login']);
+            this.router.navigate(['/user/login'], {replaceUrl: true});
           }, 200);
         }
       }
@@ -206,7 +165,11 @@ export class PerfilComponent  implements OnInit {
   }
 
   async enviarCorreo() {
+    this.interactionService.showLoading('Enviando correo...');
     await this.authenticationService.sendEmailVerification();
+    this.interactionService.dismissLoading();
+    await this.interactionService.presentAlert('Importante', 
+      `Te hemos enviado un enlace de verificación a tu correo`);
     console.log('correo enviado -> comprueba tu correo',);
   }
 
@@ -216,17 +179,14 @@ export class PerfilComponent  implements OnInit {
       const data = this.formCambiarPassword.value;
       console.log('valid -> ', data);
       try {
-        // await this.authenticationService.reauthenticateWithCredential(data.password)
         await this.interactionService.showLoading('Validando...')
         await this.authenticationService.updatePassword(data.newPassword);
         this.interactionService.dismissLoading();
         this.interactionService.showToast('Contraseña establecida con éxito');
         this.modalEditInfo.isOpen = false;
-        this.enableCambiarPassword = false;
         console.log('contraseña actualizada con éxito');
       } catch (error) {
         console.log('error al cambiar la contraseña -> ', error);
-        console.log('¿Deseas cerrar sesión y volver a ingresar para realizar esta acción?');
         this.interactionService.dismissLoading();
         const responseAlert = await this.interactionService.presentAlert('Error', 
           `Para establacer una nueva contraseña debes cerrar tu sesión e ingresar nuevamente, <strong>¿Deseas cerrar tu sesión?</strong>`,
@@ -249,8 +209,6 @@ export class PerfilComponent  implements OnInit {
       'Cancelar');
     if (responseAlert) {
       try {
-        // const data = this.formDeleteUser.value;
-        // await this.authenticationService.reauthenticateWithCredential(data.password)
         await this.interactionService.showLoading('Eliminando...')
         const user = this.authenticationService.getCurrentUser();
         // si falla al actualizar la contraseña entonces no podrá eliminar la cuenta
@@ -267,15 +225,13 @@ export class PerfilComponent  implements OnInit {
         
       } catch (error) {
         console.log('error al eliminar la cuenta -> ', error);
-        console.log('¿Deseas cerrar sesión y volver a ingresar para realizar esta acción?');
         const responseAlert = await this.interactionService.presentAlert('Error', 
           `Para eliminar tu cuenta debes cerrar tu sesión e ingresar nuevamente, <strong>¿Deseas cerrar tu sesión?</strong>`,
         'Cancelar');
         if (responseAlert) {
           await this.authenticationService.logout(false);
           setTimeout(() => {
-            this.router.navigate(['/user/login'])
-    
+            this.router.navigate(['/user/login'], {replaceUrl: true})
           }, 200);
         }
       }
@@ -293,14 +249,12 @@ export class PerfilComponent  implements OnInit {
     const folder = `PhotosPerfil/${this.user.uid}`;
     const name = this.newImage.name;
     const snapshot = await this.storageService.uploadFile(folder, name, this.newImage)
-    // const url = await this.storageService.getDownloadURL(snapshot.ref.fullPath);
     await this.authenticationService.updateProfile({photoURL: snapshot.ref.fullPath});
     const updateDoc: any = {
       photo: snapshot.ref.fullPath
     }
     await this.firestoreService.updateDocument(`${Models.Auth.PathUsers}/${this.user.uid}`, updateDoc);
     this.user = this.authenticationService.getCurrentUser(); 
-    console.log('actualizado con éxito');
     this.interactionService.dismissLoading();
     this.interactionService.showToast('Actualizado con éxito')
     this.newImage = null;

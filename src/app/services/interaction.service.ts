@@ -10,9 +10,8 @@ export class InteractionService {
   private loading: HTMLIonLoadingElement
 
   constructor(private loadingCtrl: LoadingController,
-          private toastCtrl: ToastController,
-          private alertController: AlertController
-  ) { }
+              private toastCtrl: ToastController,
+              private alertController: AlertController) { }
 
   async showLoading(message: string = 'Cargando...') {
     this.loading = await this.loadingCtrl.create({

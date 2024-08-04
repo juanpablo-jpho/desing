@@ -1,5 +1,5 @@
 import { InteractionService } from './../../../services/interaction.service';
-import { ChangeDetectorRef, Component, OnInit, inject, signal } from '@angular/core';
+import { Component, OnInit, inject} from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthenticationService } from 'src/app/firebase/authentication.service';
 import { Models } from 'src/app/models/models';
@@ -7,8 +7,7 @@ import { FirestoreService } from '../../../firebase/firestore.service';
 import { Router } from '@angular/router';
 import { StorageService } from 'src/app/firebase/storage.service';
 import { UserService } from 'src/app/services/user.service';
-import { Browser } from '@capacitor/browser';
-import { ListResult } from '@angular/fire/storage';
+
 
 @Component({
   selector: 'app-registro',
@@ -32,70 +31,16 @@ export class RegistroComponent  implements OnInit {
 
   cargando: boolean = false;
 
-  progress = '0';
   
-  file: File;
-  image: string = 'PhotosPerfil/rJJyrxNgAubGCpuupTdlmRd1XYZ2/beautiful-latin-woman-avatar-character-icon-free-vector.jpg';
-  // image = 'PhotosPerfil/icon-5887113_1280.png'
-  video: string;
-
-  fileFirestore: string = 'PhotosPerfil/young-smiling-man-avatar-brown-600nw-2261401207.webp'
-  results: ListResult;
-
+  
+  
 
   constructor(private fb: FormBuilder,
               private router: Router,
-              private changeDetectorRef: ChangeDetectorRef,
               private interactionService: InteractionService) {
               }
 
-  async ngOnInit() {
-
-      //  this.image = await this.storageService.getDownloadURL(this.image);
-      const folder = 'PhotosPerfil';
-      // const res = await this.storageService.listAll(folder);
-      console.log('image -> ', this.image);
-
-      // const metadata = await this.storageService.getMetadata(this.fileFirestore);
-      // console.log('metadata -> ', metadata);
-
-
-      
-
-      
-      
-  }
-
-  async eliminar() {
-    try {
-      await this.storageService.deleteFile(this.fileFirestore);
-      console.log('eliminado con éxito');
-      
-    } catch (error) {
-      console.log('error al eliminar -> ', error);
-      
-    }
-  }
-
-  async getMoreFiles() {
-    console.log('getMoreFiles');
-    const folder = 'PhotosPerfil';
-    let pageToken = null;
-    if (this.results) {
-      if (!this.results.nextPageToken) {
-        return;
-      }
-      pageToken = this.results.nextPageToken;
-    }
-    const res = await this.storageService.list(folder, 1, pageToken);
-    if (this.results) {
-      res.items.unshift(...this.results.items)
-      res.prefixes.unshift(...this.results.prefixes)
-    } 
-    this.results = res;
-    console.log('this.results -> ', this.results);
-    
-  }
+  async ngOnInit() {}
 
   async registrarse() {
     this.cargando = true;
@@ -144,43 +89,6 @@ export class RegistroComponent  implements OnInit {
     this.cargando = false;
   }
 
-  async uploadFile(input: HTMLInputElement) {
-    if (input.files.length) {
-        const files = input.files;
-        console.log('files -> ', files);
-        const folder = 'PhotosPerfil'
-        for (let i = 0; i < files.length; i++) {
-            const file = files.item(i)
-            if (file) {
-
-              // subir y esperar una promesa
-              // const snapshot = await this.storageService.uploadFile(folder, file.name, file)
-              // console.log('snapshot -> ', snapshot); 
-              // const url = await this.storageService.getDownloadURL(snapshot.ref.fullPath);
-              // console.log('url -> ', url);
-
-              // subir y ver el progreso
-              const s = this.storageService.uploadFileProgress(folder, file.name, file).subscribe( res => {
-                  console.log('uploadFileProgress -> ', res);
-
-                  if (res.progress) {
-                    this.progress = res.progress.toFixed(2);
-                    console.log('this.progress -> ', this.progress);
-                    this.changeDetectorRef.detectChanges();
-                  }
-                  if (res.type == 'complete') {
-                    s.unsubscribe();
-                    console.log('res.url -> ', res.url);
-                     
-                  }
-              });
-    
-            }
-        }
-    }
-
-  }
-
   async viewPreview(input: HTMLInputElement) {
     if (input.files.length) {
         const files = input.files;
@@ -190,22 +98,6 @@ export class RegistroComponent  implements OnInit {
         console.log('this.datosForm.controls.photo -> ', this.datosForm.controls.photo.value);
 
     }
-  }
-
-  async save() {
-    const folder = 'PhotosPerfil/demo';
-    // subir y esperar una promesa
-    console.log('guardando...');
-    const snapshot = await this.storageService.uploadFile(folder, this.file.name, this.file)
-    console.log('snapshot -> ', snapshot);     
-    const url = await this.storageService.getDownloadURL(snapshot.ref.fullPath);
-    console.log('url -> ', url);
-    console.log('guardado con éxito');
-  }
-
-  async view(path: string) {
-      const url = await this.storageService.getDownloadURL(path);
-      Browser.open({url})
   }
 
   download(path: string) {

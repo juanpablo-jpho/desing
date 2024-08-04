@@ -34,7 +34,6 @@ export class UsersComponent  implements OnInit {
 
   async getMoreUsers(rol: Models.Auth.Rol = this.rolSelected) {
       console.log(' getMoreUsers -> ', this.rolSegment);
-      
       if (this.rolSelected != rol) {
         this.users = null;
         this.cargando = true;
@@ -76,31 +75,8 @@ export class UsersComponent  implements OnInit {
         this.enableMore = false
       }
 
-      
-    
+     
 
-  }
-
-  async buscarPorEmail() {
-      if( this.formEmail.valid) {
-        const data = this.formEmail.value;
-        this.users = null;
-        this.cargando = true;
-        this.enableMore = false;
-        const path = Models.Auth.PathUsers;
-        let q: Models.Firebase.whereQuery[];
-        q = [ [`email`, '==', data.email] ];
-        const response = await this.firestoreService.getDocumentsQuery<Models.Auth.UserProfile>(path, q);
-        this.cargando = false;
-        if (!response.empty) {
-          response.forEach((item) => {
-              this.users = [];
-              this.users.push(item.data());
-          });
-        }
-
-
-      }
   }
 
   async loadData(ev: any) {

@@ -13,11 +13,6 @@
     </ion-toolbar>
   </ion-header>
 
-  <!-- <div style="text-align: center;">
-    <p>COMPLETAR REGISTRO</p>
-  </div> -->
-
-
     <ion-grid fixed>
       <ion-row class="ion-justify-content-center">
         <ion-col size="11" size-md="8" size-xl="6">
@@ -83,60 +78,6 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-
-
-
-      <div class="content-form">
-        <form [formGroup]="datosFormCompleteRegistro" (ngSubmit)="completarRegistro()">
-        
-
-          <div class="input-content">
-            <label>Email</label>
-            <input placeholder="Email" formControlName="email" readonly>
-          </div>
-    
-
-          <div class="input-content">
-            <label>Nombre</label>
-            <input formControlName="name" type="string">
-            <span style="text-align: end;"
-                *ngIf="datosFormCompleteRegistro.controls['name'].hasError('required')">
-              <i>Este campo es <strong>requerido</strong></i>  
-            </span>
-          </div>
-    
-
-          <div class="input-content">
-            <label>Edad</label>
-            <input formControlName="age" type="number">
-            <span style="text-align: end;"
-                *ngIf="datosFormCompleteRegistro.controls['age'].hasError('required')">
-              <i>Este campo es <strong>requerido</strong></i>  
-            </span>
-          </div>
-    
-
-          <div class="input-content">
-            <label>Foto</label>
-            <input formControlName="photo" type="string">
-            <span style="text-align: end;"
-                *ngIf="datosFormCompleteRegistro.controls['photo'].hasError('required')">
-              <i>Este campo es <strong>requerido</strong></i>  
-            </span>
-          </div>
-    
-
-          <div style="text-align: center">
-            <button type="submit"[disabled]="cargando">
-                <strong>Completar registro</strong>
-            </button>
-          </div>
-        
-        
-        </form>
-      </div>
-
-
 
 
 </ion-content>

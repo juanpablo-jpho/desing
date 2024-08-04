@@ -13,12 +13,7 @@ export class StorageService {
 
   private storage: Storage = inject(Storage);
 
-  constructor(private fileSaverService: FileSaverService) {
-
-    const ref = 'PhotosPerfil/icon-5887113_1280.png';
-    const url = 'https://firebasestorage.googleapis.com/v0/b/otra-app-645d0.appspot.com/o/PhotosPerfil%2Ficon-5887113_1280.png?alt=media&token=8012ecdc-3e02-4952-b514-47981d9366ab'
-
-  }
+  constructor(private fileSaverService: FileSaverService) {}
 
   uploadString(folder: string, name: string, text: string) {
       const storageRef = ref(this.storage, `${folder}/${name}`);

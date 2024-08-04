@@ -1,18 +1,12 @@
 import { Injectable, inject } from '@angular/core';
 import { Auth, createUserWithEmailAndPassword, signInWithEmailAndPassword, 
         signOut, authState, updateProfile, updateEmail,
-        sendEmailVerification,
-      reauthenticateWithCredential, 
-      EmailAuthProvider, verifyBeforeUpdateEmail,
+        sendEmailVerification, reauthenticateWithCredential, 
+      verifyBeforeUpdateEmail,
       updatePassword, sendPasswordResetEmail,
-      deleteUser,
-      signInWithRedirect,
-      GoogleAuthProvider,
-      OAuthProvider,
-      FacebookAuthProvider,
-      OAuthCredential,
-      signInWithCredential,
-      getRedirectResult,
+      deleteUser, signInWithRedirect,
+      GoogleAuthProvider, OAuthProvider, FacebookAuthProvider,
+      OAuthCredential, signInWithCredential, getRedirectResult,
     } from '@angular/fire/auth';
 import { FirestoreService } from './firestore.service';
 import { environment } from 'src/environments/environment';
@@ -30,7 +24,6 @@ export class AuthenticationService {
 
 
   constructor() { 
-    // this.logout();
     this.auth.languageCode = 'es';       
   }
 
@@ -57,15 +50,10 @@ export class AuthenticationService {
   }
 
   reauthenticateWithCredential(password: string) {
-    // const credential = EmailAuthProvider.credential(
-    //   this.auth.currentUser.email,
-    //   password
-    // );
     const credential = GoogleAuthProvider.credential(null, password);
     return reauthenticateWithCredential(this.auth.currentUser, credential)
   }
 
-  
   sendEmailVerification() {
     return sendEmailVerification(this.auth.currentUser)
   }
@@ -73,7 +61,6 @@ export class AuthenticationService {
   updatePassword(newPasword: string) {
     return updatePassword(this.auth.currentUser, newPasword)
   }
-
 
   sendPasswordResetEmail(email: string) {
     return sendPasswordResetEmail(this.auth, email);
@@ -84,7 +71,6 @@ export class AuthenticationService {
   }
 
   async logout(reload = true) {
-    // return signOut(this.auth);
     await signOut(this.auth);
     if (reload) {
       window.location.reload();
@@ -136,7 +122,6 @@ export class AuthenticationService {
         // const link = `http://localhost:8100/user/request-login?provider=${providerId}&intentId=${id}`;
         const link = `https://${environment.firebaseConfig.authDomain}/user/request-login?provider=${providerId}&intentId=${id}`;
         // console.log('link -> ', link);
-
         await Browser.open({ url: link });        
       } catch (error) {
         resolve(null);
@@ -159,7 +144,7 @@ export class AuthenticationService {
           credential = FacebookAuthProvider.credential(token);
           break;
       }
-      console.log('credentials -> ', credential);
+      // console.log('credentials -> ', credential);
       if (credential) {
         return await signInWithCredential(this.auth, credential);
       }

@@ -46,7 +46,8 @@ export class CompletarRegistroComponent  implements OnInit {
                 name: this.user.displayName,
                 photo: photo,
                 age: null
-              })
+              }
+)
 
 
   }

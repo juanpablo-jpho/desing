@@ -15,7 +15,6 @@ const routes: Routes = [
   {path: 'registro', component: RegistroComponent, canActivate: [guards.notLogin('/user/perfil')]},
   {path: 'completar-registro', component: CompletarRegistroComponent, canActivate: [guards.isLogin()]},
   {path: 'perfil', component: PerfilComponent, canActivate: [guards.isLogin()]},
-  // {path: 'admin', component: UsersComponent, canActivate: [guards.isRol(['admin'])]}
   {path: 'admin', component: UsersComponent, canActivate: [guards.isRolClaim(['admin'])]}
 ];
 

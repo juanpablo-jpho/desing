@@ -19,7 +19,6 @@ export class RequestLoginComponent  implements OnInit {
   private firestoreService: FirestoreService = inject(FirestoreService);
   userService: UserService = inject(UserService);
 
-  message: string = 'procesando...';
 
   constructor(private route: ActivatedRoute,
               private router: Router,
@@ -54,7 +53,6 @@ export class RequestLoginComponent  implements OnInit {
       const result =  await this.authenticationService.getRedirectResult();
       console.log('getRedirectResult -> ', result);
       if (result) {
-        this.message = 'redirigiendo...'
         const credential = OAuthProvider.credentialFromResult(result)
         console.log('credential -> ', credential);
         const token = credential.idToken ? credential.idToken : credential.accessToken;
@@ -67,8 +65,8 @@ export class RequestLoginComponent  implements OnInit {
   async saveToken(token: string) {
     const queryParams: any = this.route.snapshot.queryParams;
     const intentId = queryParams.intentId;
-    console.log('intentId -> ', intentId);
-    console.log('saveToken -> ', token);
+    // console.log('intentId -> ', intentId);
+    // console.log('saveToken -> ', token);
     if (intentId) {
       const path = Models.Auth.PathIntentsLogin;
       const dataUpdate = { token };

@@ -3,7 +3,7 @@ import { AuthenticationService } from '../firebase/authentication.service';
 import { User } from '@angular/fire/auth';
 import { FirestoreService } from '../firebase/firestore.service';
 import { Models } from '../models/models';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { WebService } from './web.service';
 
 @Injectable({
@@ -22,8 +22,7 @@ export class UserService {
   validateHasProfile: boolean = true;
 
 
-  constructor(private router: Router,
-              private route: ActivatedRoute) { 
+  constructor(private router: Router) { 
 
       console.log('UserService init');
       this.getState();
@@ -61,13 +60,6 @@ export class UserService {
   async getUserProfile(uid: string) {
     return new Promise<Models.Auth.UserProfile>( async (resolve) => {
 
-        // const queryParams: any = this.route.snapshot.queryParams;
-        // const intentId = queryParams.intentId
-        // if (intentId) { 
-        //   resolve(null)
-        //   return; 
-        // }
-
         if (this.userProfile) {
           resolve(this.userProfile);
           return;
@@ -91,7 +83,6 @@ export class UserService {
   isLogin() {
     return new Promise<boolean>( async (resolve) => {
       console.log('isLogin');
-      
       const user = await this.getState();
       if (user) {
         resolve(true);

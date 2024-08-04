@@ -16,10 +16,6 @@
   </ion-header>
 
 
-  <!-- <div style="text-align: center;">
-    <p>ADMINISTRADOR DE USUARIOS</p>
-  </div> -->
-
   <ion-searchbar placeholder="Correo"  type="email" mode="ios"
     (ionChange)="onSearchChange($event)" showCancelButton="always"
     cancelButtonText="cancelar"
@@ -27,44 +23,8 @@
     (ionCancel)="cancelSearch()">
 </ion-searchbar>
 
-  @if (enableBuscarPorEmail) {
+  @if (!enableBuscarPorEmail) {
 
-      <!-- <div class="content-form">
-        <form [formGroup]="formEmail" (ngSubmit)="buscarPorEmail()">
-        
-          <div class="input-content">
-            <label>Email</label>
-            <input placeholder="Email" formControlName="email">
-            <span 
-                *ngIf="formEmail.controls['email'].hasError('required')">
-              <i>Este campo es <strong>requerido</strong></i>  
-            </span>
-            <span style="text-align: end;"
-            *ngIf="formEmail.controls['email'].hasError('email')">
-            <i>Ingresa un email <strong>válido</strong></i>  
-            </span>
-    
-          </div>
-  
-          <div style="text-align: center">
-            <button (click)="enableBuscarPorEmail = false">
-              <strong>cancelar</strong>
-             </button>
-            <button type="submit"[disabled]="cargando">
-                <strong>buscar</strong>
-            </button>
-          </div>
-        
-        </form>
-      </div> -->
-   
-  } @else {
-
-
-
-    <!-- <div style="text-align: center">
-      <button class="button-gris"(click)="enableBuscarPorEmail = true; users = null">Buscar por email</button>
-    </div> -->
 
     <ion-grid fixed>
       <ion-row class="ion-justify-content-center">
@@ -80,13 +40,6 @@
       </ion-row>
     </ion-grid>
 
-
-    <!-- <div style="text-align: center;">
-      @for (rol of roles; track $index) {
-        <button class="rol" [ngClass]="{'rol-selected': rol == rolSelected}"
-        (click)="getMoreUsers(rol)">{{rol}}</button>
-      }
-    </div> -->
   }
      
   @if(!cargando) {
@@ -110,22 +63,12 @@
         </ion-infinite-scroll-content>
       </ion-infinite-scroll>
 
-      <!-- @if (enableMore) {
-        <div style="text-align:center" >
-          <button (click)="getMoreUsers()" class="more">más</button>
-        </div>
-      } -->
-
   } 
   @else {
     <br>
     <div class="ion-text-center">
       <ion-spinner name="bubbles"></ion-spinner>
     </div>
-    <!-- <p style="text-align: center">cargando...</p> -->
   }
-
-
-    <!-- <div  style="margin: 60px"></div> -->
 
 </ion-content>
